@@ -56,11 +56,11 @@ export default function Socials() {
 								</div>
 							</div>
 							<div className="flex w-fit h-fit gap-x-[5px] group">
-								<div className="rounded-[50px] border-[2px] border-[#21212155] group-hover:bg-white py-[3px] px-[12px] cursor-pointer">
+								{/* <div className="rounded-[50px] border-[2px] border-[#21212155] group-hover:bg-red-600 py-[3px] px-[12px] cursor-pointer">
 								<h1 className="paragraph  font-NeueMontreal text-white font-bold">
 							Contact Number : 
   <a 
-    href="https://wa.me/919789985132?text=Dear%20Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20ongoing%20projects.%20Could%20you%20please%20provide%20more%20details%20or%20let%20me%20know%20a%20suitable%20time%20to%20discuss%20further%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C%20Client" 
+    href="https://wa.me/+918279447049?text=Dear%20Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20ongoing%20projects.%20Could%20you%20please%20provide%20more%20details%20or%20let%20me%20know%20a%20suitable%20time%20to%20discuss%20further%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C%20Client" 
     target="_blank" 
     rel="noopener noreferrer"
     className="text-green-600 font-bold underline"
@@ -69,7 +69,7 @@ export default function Socials() {
 	 +91 82794 47049
   </a>
 </h1>
-								</div>
+								</div> */}
 								<div className="w-[33px] flex items-center justify-center h-[33px] border-[2px] border-[#21212155] rounded-[50px] group-hover:bg-secondry transition-all duration-200 ease-in cursor-pointer sm:hidden xm:hidden">
 									<p className="paragraph font-normal text-secondry group-hover:text-background">
 										<ArrowUpRight

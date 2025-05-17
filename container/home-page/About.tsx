@@ -123,6 +123,12 @@ const nicheData = [
     title: "Food & Beverage Brands",
 
     imageUrl: "/i5.jpg"
+  },
+  {
+    id: 6,
+    title: "Corporate Houses",
+
+    imageUrl: "/ch.png"
   }
 ];
 
@@ -151,7 +157,7 @@ const ServicePopup = ({ service, isOpen, onClose }: { service: any, isOpen: bool
             {service.bulletins.map((item: string | number | bigint | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | Promise<AwaitedReactNode> | null | undefined, index: Key | null | undefined) => (
               <li key={index} className="flex items-start gap-3">
                 <div className="mt-1 h-4 w-4 rounded-full bg-red-500 flex-shrink-0"></div>
-                <p className="text-white font-['Gilda_Display'] text-lg">{item}</p>
+                <p className="text-white font-['Montserrat'] text-lg">{item}</p>
               </li>
             ))}
           </ul>
@@ -218,7 +224,7 @@ export default function About() {
       </div>
 
       {/* Services Section - With Images */}
-      <div id="services" className="w-full max-w-6xl mx-auto relative z-10 mb-40">
+      <div id="services" className="w-full max-w-6xl  mx-auto relative z-10 mb-40">
         <h2 className="text-6xl font-normal mb-24 text-center font-['Gilda_Display'] text-white opacity-100">
           Our Expertise
         </h2>
@@ -259,19 +265,19 @@ export default function About() {
                 {service.description}
               </p>
 
-              {/* Added bulletins in a clean, elegant format */}
+              {/* Changed bulletin font to Montserrat */}
               <div className="mb-8">
-                <h4 className="text-red-400 mb-4 font-['Gilda_Display'] text-lg">Services Include:</h4>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <h4 className="text-red-400 mb-4 font-NeueMontreal text-lg">Services Include:</h4>
+                <ul className="grid grid-cols-1 font-NeueMontreal md:grid-cols-2 gap-3">
                   {service.bulletins.slice(0, 4).map((item, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-white/80">
+                    <li key={idx} className="flex items-center gap-2 font-NeueMontreal text-white/80">
                       <div className="h-2 w-2 rounded-full bg-red-500"></div>
-                      <span className="font-['Gilda_Display'] text-sm">{item}</span>
+                      <span className="font-NeueMontreal text-lg">{item}</span>
                     </li>
                   ))}
                 </ul>
                 {service.bulletins.length > 4 && (
-                  <div className="mt-2 text-white/60 text-sm font-['Gilda_Display']">
+                  <div className="mt-2 text-white/60 text-sm font-['Montserrat']">
                     +{service.bulletins.length - 4} more services
                   </div>
                 )}
@@ -429,9 +435,7 @@ export default function About() {
 
       {/* View All Button */}
       <div className="mt-12 text-center">
-        <button className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-1">
-          View All Industries
-        </button>
+       
       </div>
     </section>
   );

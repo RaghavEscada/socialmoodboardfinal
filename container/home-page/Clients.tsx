@@ -37,11 +37,7 @@ const Testimonial = () => {
           <ReviewCard key={review.email} {...review} />
         ))}
       </Marquee>
-      <Marquee pauseOnHover className="[--duration:20s]">
-        {thirdRow.map((review) => (
-          <ReviewCard key={review.email} {...review} />
-        ))}
-      </Marquee>
+     
 
       <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-black dark:from-black"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-black dark:from-black"></div>
@@ -124,11 +120,11 @@ const LogoCloud = () => {
     },
     {
       name: "Post CSS",
-      url: "/l2.png",
+      url: "/l8.png",
     },
     {
       name: "Post CSS",
-      url: "/l13.png",
+      url: "/l4.png",
     },
   ];
   

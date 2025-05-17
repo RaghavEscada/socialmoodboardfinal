@@ -35,10 +35,10 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-medium mb-6">Pages</h3>
               <ul className="space-y-4">
-                <li><Link href="/products" className="hover:text-gray-300">Services</Link></li>
-                <li><Link href="/studio" className="hover:text-gray-300">Works</Link></li>
-                <li><Link href="/clients" className="hover:text-gray-300">About</Link></li>
-                <li><Link href="/pricing" className="hover:text-gray-300">Contact</Link></li>
+                <li><Link href="/services" className="hover:text-gray-300">Services</Link></li>
+                <li><Link href="/works" className="hover:text-gray-300">Works</Link></li>
+                <li><Link href="/about" className="hover:text-gray-300">About</Link></li>
+                <li><Link href="/contact" className="hover:text-gray-300">Contact</Link></li>
 
               </ul>
             </div>
@@ -47,10 +47,10 @@ export default function Footer() {
             <div>
               <h3 className="text-lg font-medium mb-6">Socials</h3>
               <ul className="space-y-4">
-                <li><Link href="https://facebook.com" className="hover:text-gray-300">Facebook</Link></li>
-                <li><Link href="https://instagram.com" className="hover:text-gray-300">Instagram</Link></li>
-                <li><Link href="https://twitter.com" className="hover:text-gray-300">Twitter</Link></li>
-                <li><Link href="https://linkedin.com" className="hover:text-gray-300">LinkedIn</Link></li>
+                <li><Link href="https://www.facebook.com/profile.php?id=61573787330753" className="hover:text-gray-300">Facebook</Link></li>
+                <li><Link href="https://www.instagram.com/socialmooodboard/" className="hover:text-gray-300">Instagram</Link></li>
+              
+                <li><Link href="https://www.linkedin.com/in/vishishta-banerjee-9652ba198/" className="hover:text-gray-300">LinkedIn</Link></li>
               </ul>
             </div>
 
