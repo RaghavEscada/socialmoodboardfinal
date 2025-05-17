@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Moodboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background: #494949;
+    }
+
+    .container {
+      width: 100%;
+      height: 90vh;
+    }
+
+    /* somewhat globals */
+
+    p {
+      font-family: "Formula Condensed";
+      color: #ffffff;
+      text-align: left;
+      font-size: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .row {
+      color: #ffffff;
+    }
+
+    .border-right {
+      border-right: 2px solid #000;
+    }
+
+    .border-bottom {
+      border-bottom: 2px solid #000;
+    }
+
+    .flex-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* row#1  */
+
+    .row-1 {
+      position: relative;
+      top: -100%;
+      width: 100%;
+      height: 30vh;
+      display: flex;
+      background: #494949;
+      z-index: 2;
+    }
+
+    .brand-name {
+      position: relative;
+      left: -100%;
+      flex: 5;
+    }
+
+    .brand-name .header h1 {
+      font-family: "Basement Grotesque";
+      font-weight: 300;
+      font-size: 3rem;
+      text-transform: uppercase;
+      font:bold;
+      color:black;
+    }
+
+    .brand-contact {
+      position: relative;
+      left: -4rem;
+      flex-direction: column;
+      flex: 2;
+    }
+
+    /* row-2 */
+
+    .row-2 {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      display: flex;
+      z-index: 0;
+    }
+
+    .hero-copy {
+      flex: 5;
+    }
+
+    /* hero img */
+    .hero-img {
+      flex: 2;
+    }
+
+    .hero-img {
+      display: flex;
+    }
+
+    .img-container {
+      position: relative;
+      overflow: hidden;
+      flex: 3;
+      height: 100%;
+    }
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* transform: scale(2); */
+    }
+
+    .box {
+      background: #494949;
+      opacity: 1;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 2;
+    }
+
+    .empty-rows {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      background: #494949;
+    }
+
+    .white-space {
+      width: 100%;
+    }
+
+    .white-space:nth-child(1) {
+      flex: 3;
+    }
+
+    .white-space:nth-child(2) {
+      flex: 2;
+    }
+
+    /* row #2 inner rows */
+
+    .row-2 {
+      position: relative;
+      top: -100%;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .i-row {
+      width: 100%;
+      display: flex;
+    }
+
+    .i-row>.col {
+      background: #494949;
+    }
+
+    .i-row1 {
+      flex: 3;
+    }
+
+    .i-row2 {
+      flex: 2;
+    }
+
+    .i-row .col:nth-child(1) {
+      flex: 3;
+    }
+
+    .i-row .col:nth-child(2) {
+      flex: 2;
+    }
+
+    .i-row1 .col:nth-child(1) {
+      border-radius: 0 0 40px 0;
+      border-right: 1px solid #000000;
+      border-bottom: 1px solid #000000;
+    }
+
+    .i-row1 .col:nth-child(2) {
+      border-radius: 0 0 0 40px;
+      border-left: 1px solid #000;
+      border-bottom: 1px solid #000;
+    }
+
+    .i-row2 .col:nth-child(1) {
+      border-radius: 0 40px 0 0;
+      border-right: 1px solid #000;
+      border-top: 1px solid #000;
+    }
+
+    .i-row2 .col:nth-child(2) {
+      border-radius: 40px 0 0 0;
+      border-left: 1px solid #000;
+      border-top: 1px solid #000;
+    }
+
+    /* those cols hang on */
+
+    /* col #1  */
+
+    .projects {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .project-list {
+      padding: 0 4em;
+    }
+
+    .h-stripe {
+      position: absolute;
+      padding: 1em;
+      right: -16rem;
+      transform: rotate(-90deg);
+      width: 100%;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Monument Extended";
+      overflow: hidden;
+    }
+
+    .h-stripe span {
+      position: relative;
+    }
+
+    /* col #2 */
+
+    .text {
+      position: relative;
+      font-family: "Formula Condensed";
+      text-transform: uppercase;
+    }
+
+    /* lets talk */
+
+    .lets-talk p {
+      font-size: 1.5rem;
+      padding-left: 7%;
+      padding-right: 5%;
+    }
+
+    .lets-talk p span {
+      font-family: "Basement Grotesque";
+      color: #000;
+      text-transform: uppercase;
+    }
+
+    /* stripe  */
+    .stripe {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+      width: 150%;
+      height: 2px;
+      background: #000;
+    }
+
+    /* marquee */
+
+    .marquee {
+      position: absolute;
+      bottom: 0%;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0.2em 0;
+      white-space: nowrap;
+      overflow: hidden;
+      z-index: 3;
+      background: #000;
+      display: flex;
+      align-items: center;
+    }
+
+    .marquee span {
+      font-family: "Formula Condensed";
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #b3b0aa;
+      font-size: 4em;
+      text-transform: uppercase;
+      padding-left: -10%;
+      animation: marquee-animation 80s linear infinite;
+    }
+
+    @keyframes marquee-animation {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(-100%, 0);
+      }
+    }
+
+    .brand-name,
+    .brand-contact {
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1,
+    p {
+      position: relative;
+      top: 400px;
+    }
+
+    /* Mobile Responsive Styles */
+    @media only screen and (max-width: 768px) {
+      html, body {
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+      }
+      
+      .container {
+        height: auto;
+      }
+      
+      /* Row 1 mobile styling */
+      .row-1 {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .brand-name {
+        flex: 1;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #000000;
+        padding: 1rem 0;
+      }
+      
+      .brand-name .header h1 {
+        font-size: 1.5rem;
+        text-align: center;
+        color:black;
+      }
+      
+      .brand-contact {
+        flex: 1;
+        width: 100%;
+        left: 0;
+        padding: 1rem 0;
+        text-align: center;
+      }
+      
+      /* Row 2 mobile styling */
+      .row-2 {
+        flex-direction: column;
+        height: auto;
+      }
+      
+      .hero-copy {
+        flex: 1;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #000;
+      }
+      
+      .i-row {
+        flex-direction: column;
+      }
+      
+      .i-row .col {
+        width: 100%;
+        border-radius: 0 !important;
+      }
+      
+      .i-row1 .col:nth-child(1), 
+      .i-row1 .col:nth-child(2),
+      .i-row2 .col:nth-child(1),
+      .i-row2 .col:nth-child(2) {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #000;
+      }
+      
+      .hero-img {
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+      }
+      
+      .img-container {
+        width: 100%;
+        height: 40vh;
+        border-right: none;
+        border-bottom: 2px solid #000;
+      }
+      
+      .empty-rows {
+        width: 100%;
+      }
+      
+      /* Marquee adjustments */
+      .marquee {
+        position: relative;
+      }
+      
+      .marquee span {
+        font-size: 2em;
+      }
+      
+      /* Project list adjustments */
+      .project-list {
+        padding: 2em;
+      }
+      
+      .h-stripe {
+        right: -1em;
+        padding: 0rem;
+      }
+      
+      /* Let's talk section */
+      .lets-talk p {
+        font-size: 1rem;
+        text-align: center;
+        padding: 1rem 0;
+      }
+      
+      /* Circle text */
+      .text svg {
+        width: 300px;
+        height: 300px;
+        margin: 1rem auto;
+        display: block;
+        color:#fff;
+      }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <!-- row #1 -->
+    <div class="row row-1 border-bottom">
+      <div class="brand-name pt-7 flex-center border-right">
+        <div class="header">
+          <h1>Stand out from the Ordinary </h1>
+        </div>
+      </div>
+
+      <div class="brand-contact flex-center">
+        <div class="contact-container">
+          <p>Pune</p>
+          <p>Dehradun</p>
+          <p>Mumbai</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- row #2 -->
+    <div class="row row-2 border-bottom">
+      <div class="hero-copy border-right">
+        <!-- inner rows -->
+        <div class="i-row i-row1">
+          <div class="col projects">
+            <div class="project-list">
+              <p>We’re not just another consultancy —we’re the ones brands call when they’re ready to stop blending in. Social Moodboard is where bold ideas meet strategic execution, crafting brands that don’t just exist but own their space.</p>
+            </div>
+            <div class="h-stripe"><span>Social Moodboard</span></div>
+          </div>
+          <div class="col circle-text flex-center">
+            <div class="text">
+              <svg viewBox="0 0 100 100" width="200" height="200">
+                <defs>
+                  <path id="circle" d="
+                        M 50, 50
+                        m -37, 0
+                        a 37,37 0 1,1 74,0
+                        a 37,37 0 1,1 -74,0" />
+                </defs>
+                <text font-size="14" fill="white">
+                  <textPath xlink:href="#circle">
+                   social Moodboard*Nobasics*
+                  </textPath>
+                </text>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="i-row i-row2">
+          <div class="row lets-talk pl-9 flex-center">
+           
+            <p>
+            We don’t just post—we create impact. From eye-catching content to scroll-stopping campaigns, we build brands that speak. Let’s turn your vision into a vibe that converts.
+            </p>
+            
+          </div>
+          <div class="col stripe">
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-img">
+        <div class="img-container border-right">
+          <div class="box"></div>
+          <div>
+            <img class="image" src="/ball.jpeg" />
+          </div>
+        </div>
+
+        <div class="empty-rows">
+          <div class="white-space border-bottom"></div>
+          <div class="white-space"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="marquee">
+    <span>
+      &nbsp; We don't do basics here &nbsp; / &nbsp; Absolutely master of our craft &nbsp; /
+      &nbsp; We don't do basics here &nbsp; / &nbsp; Absolutely master of our craft &nbsp; /
+      &nbsp; impulse &nbsp; / &nbsp; independent creative studio &nbsp; / &nbsp;
+      We don't do basics here &nbsp;
+    </span>
+  </div>
+</body>
+<script>
+  gsap.to(".row-1, .row-2", 1, {
+    top: 0,
+    ease: "power4.out",
+    delay: 1,
+    stagger: {
+      amount: 0.5,
+    },
+  });
+
+  gsap.to(".brand-name", 1, {
+    left: 0,
+    ease: "power4.out",
+    delay: 2.5,
+    stagger: {
+      amount: 0.5,
+    },
+  });
+
+  gsap.from(".lets-talk p", 0.1, {
+    opacity: 0,
+    ease: "power4.out",
+    delay: 2,
+  });
+
+  gsap.from(".text", 2, {
+    scale: 0,
+    ease: "power4.out",
+    delay: 2,
+  });
+
+  gsap.to(".text", 20, {
+    rotation: "360",
+    ease: Linear.easeNone,
+    repeat: -1,
+  });
+
+  gsap.to(".box", 1, {
+    top: "100%",
+    ease: "power4.out",
+    delay: 2,
+  });
+
+  gsap.to("h1, p", 1, {
+    top: 0,
+    ease: "power4.out",
+    delay: 2,
+    stagger: {
+      amount: 0.5,
+    },
+  });
+
+  gsap.from(".h-stripe", 1, {
+    top: "500%",
+    ease: "power4.out",
+    delay: 3.5,
+  });
+
+  gsap.from(".h-stripe span", 1, {
+    top: "300px",
+    ease: "power4.out",
+    delay: 4,
+  });
+
+  gsap.from(".line", 1, {
+    scaleX: 0,
+    ease: "power4.out",
+    delay: 3.5,
+  });
+
+  gsap.from(".marquee", 1, {
+    bottom: "-10em",
+    ease: "power4.out",
+    delay: 3,
+  });
+</script>
+
+</html>

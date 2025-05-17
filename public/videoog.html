@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relaxing 3D Circular Video Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 1000vh;
+      font-family: "Circular Std", sans-serif;
+      background: #ffffff;
+    }
+
+    nav,
+    footer {
+      position: fixed;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 2em;
+      font-size: 14px;
+      font-weight: 500;
+      color: #000;
+    }
+
+    nav {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+
+    .container {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      perspective: 1500px;
+    }
+
+    .gallery {
+      position: absolute;
+      top: 70%;
+      left: 49%;
+      transform-style: preserve-3d;
+      transform: translateX(-50%) rotateX(55deg);
+      z-index: 1;
+    }
+
+    .item {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 114px;
+      height: 36px;
+      background: #b0b0b0;
+      margin: 10px;
+      transform-style: preserve-3d;
+      cursor: pointer;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .item video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .preview-video {
+      padding-top: 6%;
+      position: fixed;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 290px;
+      height:580px;
+
+      overflow: hidden;
+      z-index: 2;
+      border-radius: 8px;
+    }
+
+    .preview-video video {
+      width: 290px;
+      height: 580px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <p>
+      Codegrid &nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;16 05 2025
+    </p>
+    <p>Subscribe &nbsp;&nbsp;&nbsp Instagram &nbsp;&nbsp;&nbsp Twitter</p>
+  </nav>
+  <footer>
+    <p>Unlock Source Code with PRO</p>
+    <p>Link In Description</p>
+  </footer>
+
+  <div class="preview-video">
+    <video src="./1.mp4" autoplay muted loop></video>
+  </div>
+
+  <div class="container">
+    <div class="gallery"></div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.3/ScrollTrigger.min.js"></script>
+  <script>
+    window.onload = function () {
+      const gallery = document.querySelector(".gallery");
+      const previewVideo = document.querySelector(".preview-video video");
+
+      document.addEventListener("mousemove", function (event) {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        const percentX = (x - centerX) / centerX;
+        const percentY = (y - centerY) / centerY;
+
+        const rotateX = 45 + percentY * 2;
+        const rotateY = percentX * 2;
+
+        gsap.to(gallery, {
+          duration: 1,
+          ease: "power2.out",
+          rotateX: rotateX,
+          rotateY: rotateY,
+          overwrite: "auto",
+        });
+      });
+
+      // Create exactly 8 items
+      for (let i = 0; i < 8; i++) {
+        const item = document.createElement("div");
+        item.className = "item";
+
+        const video = document.createElement("video");
+        video.src = "./" + (i + 1) + ".mp4";
+        video.muted = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.playsInline = true;
+
+        item.appendChild(video);
+        gallery.appendChild(item);
+      }
+
+      const items = document.querySelectorAll(".item");
+      const numberOfItems = items.length;
+      const angleIncrement = 360 / numberOfItems;
+
+      items.forEach((item, index) => {
+        gsap.set(item, {
+          rotationY: 90,
+          rotationZ: index * angleIncrement - 90,
+          transformOrigin: "50% 200px",
+        });
+
+        item.addEventListener("mouseover", function () {
+          const videoInsideItem = item.querySelector("video");
+          previewVideo.src = videoInsideItem.src;
+          previewVideo.play();
+
+          gsap.to(item, {
+            x: 5,
+            z: 5,
+            y: -5,
+            ease: "power2.out",
+            duration: 0.5,
+          });
+        });
+
+        item.addEventListener("mouseout", function () {
+          previewVideo.src = "./1.mp4";
+          previewVideo.play();
+
+          gsap.to(item, {
+            x: 0,
+            y: 0,
+            z: 0,
+            ease: "power2.out",
+            duration: 0.5,
+          });
+        });
+      });
+
+      ScrollTrigger.create({
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 2,
+        onUpdate: (self) => {
+          const rotationProgress = self.progress * 360 * 1;
+          items.forEach((item, index) => {
+            const currentAngle = index * angleIncrement - 90 + rotationProgress;
+            gsap.to(item, {
+              rotationZ: currentAngle,
+              duration: 1,
+              ease: "power3.out",
+              overwrite: "auto",
+            });
+          });
+        },
+      });
+    };
+  </script>
+</body>
+
+</html>
