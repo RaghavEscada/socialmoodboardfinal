@@ -48,7 +48,7 @@ const Testimonial = () => {
       
 
       
-      <div className="bg-white">
+      <div className="bg-gray-200">
       <LogoCloud />
       </div>
       {/* Client logos placed below testimonials */}
@@ -126,6 +126,10 @@ const LogoCloud = () => {
       name: "Post CSS",
       url: "/l2.png",
     },
+    {
+      name: "Post CSS",
+      url: "/l3.png",
+    },
   ];
   
   return (
@@ -149,7 +153,7 @@ const LogoCloud = () => {
                   <img
                     key={key}
                     src={logo.url}
-                    className="h-20 w-42 px-2"
+                    className="h-28 w-42 px-2"
                     alt={logo.name}
                   />
                 ))}

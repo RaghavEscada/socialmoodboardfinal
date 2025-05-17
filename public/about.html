@@ -293,30 +293,7 @@
 
     /* marquee */
 
-    .marquee {
-      position: absolute;
-      bottom: 0%;
-      width: 100%;
-      margin: 0 auto;
-      padding: 0.2em 0;
-      white-space: nowrap;
-      overflow: hidden;
-      z-index: 3;
-      background: #000;
-      display: flex;
-      align-items: center;
-    }
 
-    .marquee span {
-      font-family: "Formula Condensed";
-      text-transform: uppercase;
-      font-weight: 400;
-      color: #b3b0aa;
-      font-size: 4em;
-      text-transform: uppercase;
-      padding-left: -10%;
-      animation: marquee-animation 80s linear infinite;
-    }
 
     @keyframes marquee-animation {
       0% {
@@ -545,14 +522,7 @@
       </div>
     </div>
   </div>
-  <div class="marquee">
-    <span>
-      &nbsp; We don't do basics here &nbsp; / &nbsp; Absolutely master of our craft &nbsp; /
-      &nbsp; We don't do basics here &nbsp; / &nbsp; Absolutely master of our craft &nbsp; /
-      &nbsp; impulse &nbsp; / &nbsp; independent creative studio &nbsp; / &nbsp;
-      We don't do basics here &nbsp;
-    </span>
-  </div>
+
 </body>
 <script>
   gsap.to(".row-1, .row-2", 1, {

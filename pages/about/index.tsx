@@ -2,10 +2,12 @@
 import { useEffect, useRef } from "react";
 import { useInView, useMotionValue, useSpring } from "framer-motion";
 import { Target, TrendingUp, Users, Zap } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 import { Curve } from "@/components";
 import { Ready } from "@/components";
 import { cn } from "@/lib/utils";
-import { Lens1, Lens2, Lens3, Lens4 } from "@/data/data";
+
 
 // NumberTicker Component
 const NumberTicker = ({
@@ -131,11 +133,42 @@ const StatsSection = () => {
   );
 };
 
-
-
 // Main About Component
 export default function About() {
-
+  // Updated niche data with fixed images
+  const nicheData = [
+    {
+      id: 1,
+      title: "Home Automation & Brands",
+     
+      imageUrl: "/i1.jpg"
+    },
+    {
+      id: 2,
+      title: "Interior Design Houses",
+     
+      imageUrl: "/i2.jpg"
+    },
+    {
+      id: 3,
+      title: "Building Solutions",
+      
+      imageUrl: "/i3.jpg"
+    },
+    {
+      id: 4,
+      title: "Salons",
+    
+      imageUrl: "/i4.jpg"
+    },
+    {
+      id: 5,
+      title: "Food & Beverage Brands",
+     
+      imageUrl: "/i5.jpg"
+    }
+  ];
+  
   return (
     <>
       <Curve backgroundColor={"#f1f1f1"}>
@@ -162,56 +195,129 @@ export default function About() {
                 </div>
                 <div className="container mx-auto px-6 relative">
                   {/* Heading with refined typography */}
-                  <h2 className="text-4xl md:text-5xl bg-[#494949] lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-                    Behind <span className="italic text-red-500 relative">
-                      Social Moodboard
-                      <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-                    </span>
-                  </h2>
-                  <div className="flex flex-col bg-[#494949] lg:flex-row items-center justify-center gap-8 lg:gap-16 mx-auto max-w-7xl">
-                    {/* Image Section with enhanced styling */}
-                    <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
-                      <img
-                        src="/vis.png"
-                        alt="Vishishta Banerjee"
-                        className="w-full h-full object-cover" />
-                    </div>
-                    {/* Text Section with better layout */}
-                    <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
-                      <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
-                        With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
-                      </p>
-                      {/* Enhanced button with animation */}
-                      <a
-                        href="/about"
-                        className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-                      >
-                        <span className="font-['Gilda_Display']">Learn More About Us</span>
-                        <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                 <div className="container mx-auto px-6 relative">
+          {/* Heading with refined typography */}
+          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
+            Behind <span className="italic text-red-500 relative">
+              Social Moodboard
+              <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
+            </span>
+          </h2>
+          
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mx-auto max-w-7xl">
+            {/* Image Section with enhanced styling */}
+            <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
+              <img
+                src="/vis.png" 
+                alt="Vishishta Banerjee"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Text Section with better layout */}
+            <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
+              <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
+                With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
+              </p>
+              
+              {/* Enhanced button with animation */}
+              <a
+                href="/about"
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+              >
+                <span className="font-['Gilda_Display']">Learn More About Us</span>
+                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
 
-              {/* Niches Section */}
-              <div data-scroll-section className="mt-32 bg-[#494949]">
-                <h2 className="text-4xl bg-[#494949] md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-                  Niches <span className="italic text-red-500 relative">
-                    Worked In
-                    <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-                  </span>
-                </h2>
-                <div className="grid grid-cols-1 bg-[#494949] lg:grid-cols-2 gap-4">
-                  <Lens1 />
-                  <Lens2 />
-                  <Lens3 />
-                  <Lens4 />
-                </div>
-              </div>
+              {/* Niches Section - UPDATED WITH FIXED IMAGES */}
+              <div data-scroll-section className="relative mt-32 bg-neutral-800 px-6 md:px-10 py-20">
+  {/* Background Pattern */}
+  <div className="absolute inset-0 opacity-5">
+    <div className="h-full w-full bg-[linear-gradient(#ffffff12_1px,transparent_1px),linear-gradient(to_right,#ffffff12_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+  </div>
+  
+  {/* Heading with animated underline */}
+  <div className="relative z-10 mb-20">
+    <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-white">
+      Niches <span className="relative inline-block">
+        <span className="italic text-red-500">Worked In</span>
+        <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 animate-expand"></span>
+      </span>
+    </h2>
+    <div className="mt-4 max-w-xl mx-auto">
+      <p className="text-gray-400 text-center text-sm md:text-base">
+        Specialized expertise across multiple industries with proven results
+      </p>
+    </div>
+  </div>
+  
+  {/* Improved Grid Layout */}
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
+    {nicheData.map((niche) => (
+      <div
+        key={niche.id}
+        className="group bg-black rounded-xl overflow-hidden shadow-lg border border-gray-800 hover:border-red-500/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
+      >
+        <div className="relative h-64 overflow-hidden">
+          <Image
+            src={niche.imageUrl}
+            alt={`${niche.title} niche`}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
+          
+          {/* Hover indicator */}
+          <div className="absolute top-4 right-4 bg-red-500 rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+            </svg>
+          </div>
+          
+          {/* Category Badge */}
+          <div className="absolute top-4 left-4">
+           
+          </div>
+        </div>
+        
+        <div className="p-6">
+          <h3 className="text-2xl font-bold text-white font-['Gilda_Display'] group-hover:text-red-500 transition-colors duration-300">
+            {niche.title}
+          </h3>
+          
+        
+          
+          <div className="mt-6 flex items-center justify-between">
+            <div className="flex items-center space-x-1">
+              <span className="text-xs text-gray-400">Results-driven approach</span>
+            </div>
+            <div className="inline-flex items-center justify-center size-8 rounded-full bg-gradient-to-br from-red-500 to-red-600 text-white shadow-lg shadow-red-500/20">
+              <svg className="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+  
+  {/* View All Button */}
+  <div className="mt-12 text-center">
+    <button className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-1">
+      View All Industries
+    </button>
+  </div>
+</div>
 
               {/* Horizontal Stats Section with Custom Background */}
               <section data-scroll-section className="py-16 bg-[#494949] text-black">
