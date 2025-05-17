@@ -6,13 +6,13 @@ export default function About() {
     // Navigate to the respective HTML page
     switch(page) {
       case "photos":
-        window.open("/graphics.html", "_self");
+        window.open("/photos.html", "_self");
         break;
       case "graphics":
-        window.open("/videos.html", "_self");
+        window.open("/graphics.html", "_self");
         break;
       case "videos":
-        window.open("/videos.html", "_self");
+        window.open("https://socialmoodboardvideogallery.netlify.app/", "_self");
         break;
       default:
         window.open("/photos.html", "_self");
