@@ -48,7 +48,7 @@ const Testimonial = () => {
       
 
       
-      <div className="bg-gray-200">
+      <div className="bg-slate-500">
       <LogoCloud />
       </div>
       {/* Client logos placed below testimonials */}
@@ -128,13 +128,13 @@ const LogoCloud = () => {
     },
     {
       name: "Post CSS",
-      url: "/l3.png",
+      url: "/l13.png",
     },
   ];
   
   return (
-    <div className="w-full py-12">
-      <div className="mx-auto w-full px-2 md:px-4">
+    <div className="w-full py-12 pt-10 pb-20">
+      <div className="mx-auto pt-10 w-full px-2 md:px-4">
         <div
           className="group relative mt-6 flex gap-6 overflow-hidden p-2"
           style={{

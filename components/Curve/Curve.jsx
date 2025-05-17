@@ -10,7 +10,6 @@ const routes = {
 	"/contact":"Reach out to elevate your brand.",
 	"/services":"Bespoke craft with a touch of exclusivity.",
 	"/about":"Our motive and work ethic",
-	
 };
 
 const anim = (variants) => {

@@ -208,21 +208,23 @@ export default function About() {
             {/* Image Section with enhanced styling */}
             <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
-              <img
+              <Image
                 src="/vis.png" 
                 alt="Vishishta Banerjee"
                 className="w-full h-full object-cover"
+                width={320}
+                height={320}
               />
             </div>
             
             {/* Text Section with better layout */}
             <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
               <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
-                With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don't just "look good" but actually drive results. From F&B hotspots to corporate houses, I've helped businesses craft an identity, connect with their audience, and, most importantly—convert.
+                With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don&apos;t just &quot;look good&quot; but actually drive results. From F&B hotspots to corporate houses, I&apos;ve helped businesses craft an identity, connect with their audience, and, most importantly—convert.
               </p>
               
               {/* Enhanced button with animation */}
-              <a
+              <Link
                 href="/about"
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
@@ -230,7 +232,7 @@ export default function About() {
                 <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
