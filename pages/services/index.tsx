@@ -1,6 +1,6 @@
 "use client";
-import { ReactNode, useEffect, useRef, useState } from "react";
-import { Instagram, Linkedin, MessageCircle, ChevronRight, X } from "lucide-react";
+import { ReactNode, useEffect, useState } from "react";
+import { Instagram, Linkedin, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -197,7 +197,7 @@ interface MarqueeProps {
   children?: React.ReactNode;
   vertical?: boolean;
   repeat?: number;
-  [key: string]: any;
+  [key: string]: unknown; // Replaced 'any' with 'unknown'
 }
  
 function Marquee({
@@ -240,8 +240,8 @@ function Marquee({
   );
 }
 
-// ReviewCard component
-const ReviewCard = ({ img, name, email, description }: Testimonial) => {
+// ReviewCard component - Removed unused props
+const ReviewCard = ({ name, description }: Pick<Testimonial, 'name' | 'description'>) => {
   return (
     <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]">
       <div className="flex flex-row items-center gap-2">
@@ -276,9 +276,11 @@ const LogoCloud = () => {
                 className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
               >
                 {logos.map((logo, key) => (
-                  <img
+                  <Image
                     key={key}
                     src={logo.url}
+                    width={168}
+                    height={112}
                     className="h-28 w-42 px-2"
                     alt={logo.name}
                   />
@@ -304,18 +306,18 @@ const TestimonialSection = () => {
           </span>
         </h2>
         <p className="text-2xl p-7 text-white italic dark:text-white md:text-xl">
-          "Ordinary doesn't live here. We craft the extraordinary, one bold idea at a time."
+          &ldquo;Ordinary doesn&apos;t live here. We craft the extraordinary, one bold idea at a time.&rdquo;
         </p>
       </div>
 
       <Marquee pauseOnHover className="[--duration:20s]">
         {firstRow.map((review) => (
-          <ReviewCard key={review.email || review.name} {...review} />
+          <ReviewCard key={review.email || review.name} name={review.name} description={review.description} />
         ))}
       </Marquee> 
       <Marquee reverse pauseOnHover className="[--duration:20s]">
         {secondRow.map((review) => (
-          <ReviewCard key={review.email || review.name} {...review} />
+          <ReviewCard key={review.email || review.name} name={review.name} description={review.description} />
         ))}
       </Marquee>
      
@@ -388,8 +390,6 @@ export default function About() {
   const closePopup = () => {
     setActivePopup(null);
   };
-
-  const containerRef = useRef(null);
 
   useEffect(() => {
     // If you still want to manually initialize Locomotive Scroll
