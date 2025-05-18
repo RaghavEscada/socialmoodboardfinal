@@ -163,10 +163,10 @@ export default function About() {
       imageUrl: "/ch.png"
     }
   ];
-  
+
   // Reference for the iframe
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  
+
   // Effect to handle iframe loading and communication
   useEffect(() => {
     const handleIframeLoad = () => {
@@ -175,10 +175,10 @@ export default function About() {
         try {
           // Attempt to access and modify the iframe's scrolling behavior
           const iframeWindow = iframeRef.current.contentWindow;
-          
+
           // This will post a message to the iframe to disable scrolling
           iframeWindow.postMessage({ action: 'disableScroll' }, '*');
-          
+
           // Add a class to indicate the iframe is loaded
           iframeRef.current.classList.add('iframe-loaded');
         } catch (e) {
@@ -186,13 +186,13 @@ export default function About() {
         }
       }
     };
-    
+
     // Attach load event listener
     const iframe = iframeRef.current;
     if (iframe) {
       iframe.addEventListener('load', handleIframeLoad);
     }
-    
+
     // Clean up
     return () => {
       if (iframe) {
@@ -200,7 +200,7 @@ export default function About() {
       }
     };
   }, []);
-  
+
   return (
     <>
       <Curve backgroundColor={"#f1f1f1"}>
@@ -289,7 +289,7 @@ export default function About() {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Improved Grid Layout */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
                   {nicheData.map((niche) => (
@@ -306,7 +306,7 @@ export default function About() {
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                         <div className="absolute inset-0 bg-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
-                        
+
                         {/* Hover indicator */}
                         <div className="absolute top-4 right-4 bg-red-500 rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -314,12 +314,12 @@ export default function About() {
                           </svg>
                         </div>
                       </div>
-                      
+
                       <div className="p-6">
                         <h3 className="text-2xl font-bold text-white font-['Gilda_Display'] group-hover:text-red-500 transition-colors duration-300">
                           {niche.title}
                         </h3>
-                        
+
                         <div className="mt-6 flex items-center justify-between">
                           <div className="flex items-center space-x-1">
                             <span className="text-xs text-gray-400">Results-driven approach</span>
@@ -334,12 +334,7 @@ export default function About() {
                     </div>
                   ))}
                 </div>
-                {/* View All Button */}
-                <div className="mt-12 text-center">
-                  <button className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-medium hover:shadow-lg hover:shadow-red-500/30 transition-all duration-300 transform hover:-translate-y-1">
-                    View All Industries
-                  </button>
-                </div>
+
               </div>
 
               {/* Horizontal Stats Section with Custom Background */}

@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 import { Instagram, Linkedin, ChevronRight, X, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -7,12 +7,7 @@ import { cn } from "@/lib/utils";
 import { Ready } from "@/components";
 
 // Define types for our data structures
-interface SocialLink {   
-  id: number;
-  title: string;
-  href: string;
-  icon: ReactNode;
-}
+
 
 interface Service {
   id: number;
