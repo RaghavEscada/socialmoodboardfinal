@@ -1,6 +1,6 @@
 "use client";
 import { ReactNode, useEffect, useState } from "react";
-import { Instagram, Linkedin, ChevronRight, X } from "lucide-react";
+import { Instagram, Linkedin, ChevronRight, X, Facebook } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -31,9 +31,11 @@ interface Testimonial {
   img: string;
 }
 
-const socialLinks: SocialLink[] = [
+const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
-  { id: 2, title: "LinkedIn", href: "https://linkedin.com", icon: <Linkedin size={20} /> },
+  { id: 2, title: "LinkedIn", href: "https://www.linkedin.com/in/vishishta-banerjee-9652ba198/", icon: <Linkedin size={20} /> },
+  { id: 3, title: "Facebook", href: "https://www.facebook.com/profile.php?id=61573787330753", icon: <Facebook size={20} /> },
+ 
 ];
 
 const services: Service[] = [

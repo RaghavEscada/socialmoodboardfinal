@@ -1,13 +1,14 @@
 "use client";
 import { AwaitedReactNode, JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, SetStateAction, useState } from "react";
-import { Instagram, Linkedin, MessageCircle, ChevronRight, X } from "lucide-react";
+import { Instagram, Linkedin, Facebook, ChevronRight, X } from "lucide-react";
 import Image from "next/image";
 
 
 const socialLinks = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
-  { id: 2, title: "LinkedIn", href: "https://linkedin.com", icon: <Linkedin size={20} /> },
-  { id: 3, title: "WhatsApp", href: "https://wa.me/+1234567890?text=Dear%20Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20how%20you%20can%20help%20with%20my%20social%20media%20strategy.%20Could%20you%20please%20provide%20more%20details%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C", icon: <MessageCircle size={20} /> },
+  { id: 2, title: "LinkedIn", href: "https://www.linkedin.com/in/vishishta-banerjee-9652ba198/", icon: <Linkedin size={20} /> },
+  { id: 3, title: "Facebook", href: "https://www.facebook.com/profile.php?id=61573787330753", icon: <Facebook size={20} /> },
+ 
 ];
 
 const services = [
