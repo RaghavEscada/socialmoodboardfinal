@@ -12,7 +12,7 @@ export default function About() {
         window.open("/graphics.html", "_self");
         break;
       case "videos":
-        window.open("https://socialmoodboardvideogallery.netlify.app/", "_self");
+        window.open("/videos.html", "_self");
         break;
       default:
         window.open("/photos.html", "_self");
