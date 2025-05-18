@@ -15,7 +15,7 @@ export default function About() {
         window.open("/video.html", "_blank");
         break;
       default:
-        window.open("/photos.html", "_blank");
+        window.open("https://linktr.ee/SocialMoodboardVideoGallery", "_blank");
     }
   };
 
