@@ -124,6 +124,7 @@
       position: relative;
       font-weight: 400;
       line-height: 85%;
+      white-space: nowrap;
     }
 
     h1 span {
@@ -193,6 +194,10 @@
       .hero {
         top: 40%;
       }
+
+      .h1 {
+        font-size: clamp(1.5rem, 3vw, 3rem);
+      }
     }
   </style>
 </head>
@@ -235,10 +240,10 @@
 
       <div class="hero">
         <div class="h1">
-          <h1>we don't do </h1>
+          <h1>we don't</h1>
         </div>
         <div class="h1">
-          <h1 class="italic">Basic here.</h1>
+          <h1 class="italic">do basic here.</h1>
         </div>
       </div>
 
@@ -418,7 +423,6 @@
           "-=0.5"
         );
     });
-
   </script>
 </body>
 
