@@ -15,14 +15,14 @@ const Testimonial = () => {
   return (
     <div className="relative flex h-auto w-full flex-col items-center font-['Gilda_Display'] justify-center overflow-hidden rounded-lg border bg-black md:shadow-xl">
       <div className="mx-auto max-w-4xl p-4 text-center sm:py-14">
-        <h1 className="mb-4 text-7xl font-['Gilda_Display'] text-white dark:text-white md:text-5xl">
-          Empowering
-          <br />
-          <span className="bg-red-700 bg-clip-text text-transparent italic">
-          Individuals & Businesses
-          </span>
-        </h1>
-        <p className="text-3xl p-7 text-white italic dark:text-white md:text-xl">
+      <h2 className="mb-3 text-4xl font-['Gilda_Display'] text-white dark:text-white md:text-lg">
+  Empowering
+  <br />
+  <span className="bg-red-700 bg-clip-text text-transparent italic">
+    Individuals & Businesses
+  </span>
+</h2>
+        <p className="text-2xl p-7 text-white italic dark:text-white md:text-xl">
         "Ordinary doesn't live here. We craft the extraordinary, one bold idea at a time."
         </p>
       </div>
