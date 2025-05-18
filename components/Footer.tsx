@@ -68,8 +68,8 @@ export default function Footer() {
       </div>
 
       {/* Large DevStudio text at bottom with full width */}
-      <div className="w-full mt-16 overflow-hidden">
-        <h1 className="text-7xl text-center
+      <div className="w-full mt-16 pb-32 overflow-hidden">
+        <h1 className="text-3xl text-center
        md:text-7xl  lg:text-8xl font-bold text-secondary opacity-30 leading-none">
           SOCIAL MOODBOARD
         </h1>

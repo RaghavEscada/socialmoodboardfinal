@@ -171,34 +171,11 @@
   <div class="container">
     <!-- Video background - adding controls for debugging -->
     <video class="video-bg" autoplay muted loop playsinline id="background-video">
-      <source src="/sm.mp4" type="video/mp4">
+      <source src="/sm.mp4" type="video/mp4" rel="preload">
     </video>
 
-    <div class="loader">
-      <div class="loader-imgs">
-        <div class="img">
-          <img src="/e1.png" alt="" />
-        </div>
-        <div class="img">
-          <img src="/e2.png" alt="" />
-        </div>
-        <div class="img">
-          <img src="/e3.jpg" alt="" />
-        </div>
-        <div class="img" id="loader-logo">
-          <img src="/smlogo.png" alt="" />
-        </div>
-        <div class="img">
-          <img src="/e4.jpg" alt="" />
-        </div>
-        <div class="img">
-          <img src="/e5.jpg" alt="" />
-        </div>
-        <div class="img">
-          <img src="/e6.jpg" alt="" />
-        </div>
-      </div>
-    </div>
+
+     
     <div class="website-content">
      
       <div class="hero">
@@ -206,7 +183,7 @@
           <h1>we don't do </h1>
         </div>
         <div class="h1">
-          <h1 class="italic">Basic here.</h1>
+          <h1 class="italic">Basics here.</h1>
         </div>
 
       
@@ -315,11 +292,11 @@
       });
 
       gsap.set(".img", { y: 500 });
-      gsap.set(".loader-imgs", { x: 500 });
+     
       gsap.set(".nav-item", { y: 25, opacity: 0 });
       gsap.set("h1, .item, footer", { y: 200 });
 
-      const tl = gsap.timeline({ delay: 1 });
+      const tl = gsap.timeline({ delay: 0 });
 
       tl.to(".img", {
         y: 0,
@@ -331,7 +308,7 @@
           ".loader-imgs",
           {
             x: 0,
-            duration: 3,
+            duration: 0,
             ease: "power3.inOut",
           },
           "-=2.5"
@@ -350,7 +327,7 @@
           ".loader",
           {
             clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            duration: 1,
+            duration: 0,
             ease: "power3.inOut",
           },
           "-=0.5"
