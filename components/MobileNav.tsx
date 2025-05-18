@@ -6,11 +6,13 @@ import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";
 import { motion } from "framer-motion";
 import { HiOutlineUserGroup } from "react-icons/hi";
+import { HiOutlineHome } from "react-icons/hi";
+
 
 // Define navigation items with icons
 const navItems = [
   {
-    id: 7,
+    id: 1,
     title: "Contact",
     href: "/contact",
     icon: AiOutlineMail
@@ -23,12 +25,18 @@ const navItems = [
   },
   {
     id: 3,
+    title: "Home",
+    href: "/",
+    icon: HiOutlineHome
+  },
+  {
+    id: 4,
     title: "Works",
     href: "/works",
     icon: AiOutlineFundProjectionScreen
   },
   {
-    id: 4,
+    id: 5,
     title: "About",
     href: "/about",
     icon: HiOutlineUserGroup

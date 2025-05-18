@@ -12,10 +12,10 @@ export default function About() {
         window.open("/graphics.html", "_blank");
         break;
       case "videos":
-        window.open("/video.html", "_blank");
+        window.open("https://linktr.ee/SocialMoodboardVideoGallery", "_blank");
         break;
       default:
-        window.open("https://linktr.ee/SocialMoodboardVideoGallery", "_blank");
+        window.open("/photos.html", "_blank");
     }
   };
 
