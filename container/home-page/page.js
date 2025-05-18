@@ -9,8 +9,8 @@ import { useTransform, useScroll, motion } from 'framer-motion';
 const images = [
   'h1.jpeg',
   '2.png',
-  'h3.jpg',
-  'h3.jpg',
+  '20.png',
+  '23.png',
   '3.png',
   'img1.jpg',
   '9.png',
