@@ -15,7 +15,7 @@ const images = [
   '9.png',
   'h9.jpeg',
   '18.png',
-  '17.png',
+  '17.webp',
   '7.png',
 ];
 
