@@ -5,6 +5,7 @@ import { MdOutlineDesignServices } from "react-icons/md";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import {AiOutlineMail} from "react-icons/ai";
 import { motion } from "framer-motion";
+import { HiOutlineUserGroup } from "react-icons/hi";
 
 // Define navigation items with icons
 const navItems = [
@@ -30,7 +31,7 @@ const navItems = [
     id: 4,
     title: "About",
     href: "/about",
-    icon: AiOutlineFundProjectionScreen
+    icon: HiOutlineUserGroup
   },
 ];
 
