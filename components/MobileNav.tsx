@@ -26,6 +26,12 @@ const navItems = [
     href: "/works",
     icon: AiOutlineFundProjectionScreen
   },
+  {
+    id: 4,
+    title: "About",
+    href: "/about",
+    icon: AiOutlineFundProjectionScreen
+  },
 ];
 
 export default function MobileNav() {

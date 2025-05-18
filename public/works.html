@@ -110,7 +110,7 @@
     </nav>
 
     <div class="header">
-      <h1>Nah, we don fw basics</h1>
+      <h1>MOOD. </br> ENERGY. </br> IMPACT.</h1>
     </div>
 
    
@@ -123,20 +123,15 @@
         { url: "/w2.jpg" },
         { url: "/w3.jpg" },
         { url: "/w4.jpg" },
-
         { url: "/w5.jpg" },
         { url: "/w6.jpeg" },
         { url: "/w14.jpg" },
         { url: "/w8.jpg" },
-
         { url: "/w9.jpg" },
         { url: "/w10.jpg" },
         { url: "/w11.jpg" },
         { url: "/img3.jpg" },
-
-        { url: "/img3.jpg" },
         { url: "/w18.jpg" },
-       
       ];
 
       // configuration parameters
@@ -144,13 +139,14 @@
         rows: 9,
         columns: 9,
         curvature: 5,
-        spacing: 8,  // REDUCED FROM 10 TO 6
+        spacing: 8,
         imageWidth: 4.5,
         imageHeight: 7,
         depth: 7.5,
         elevation: 0,
         lookAtRange: 20,
         verticalCurvature: 0.5,
+        anisotropy: 16, // Added for better image quality
       };
 
       // scene setup
@@ -163,10 +159,32 @@
       );
       camera.position.set(0, 0, 40);
 
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      const renderer = new THREE.WebGLRenderer({ 
+        antialias: true,
+        powerPreference: "high-performance" // Added for better performance
+      });
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setClearColor(0x494949);
+      renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
       document.body.appendChild(renderer.domElement);
+
+      // Create a texture loader with improved settings
+      const textureLoader = new THREE.TextureLoader();
+      
+      // Enable anisotropic filtering for all textures
+      const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+      params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
+
+      // Load all textures in advance with high quality settings
+      const textureCache = {};
+      images.forEach(image => {
+        const texture = textureLoader.load(image.url);
+        texture.anisotropy = params.anisotropy;
+        texture.minFilter = THREE.LinearMipMapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.generateMipmaps = true;
+        textureCache[image.url] = texture;
+      });
 
       // debug mode setup
       const DEBUG_MODE = false;
@@ -183,6 +201,14 @@
         gui.add(params, "depth", 5, 50).onChange(updateGallery);
         gui.add(params, "elevation", -10, 10).onChange(updateGallery);
         gui.add(params, "lookAtRange", 5, 50).name("Look Range");
+        gui.add(params, "anisotropy", 1, maxAnisotropy).name("Texture Quality").onChange(updateTextureQuality);
+      }
+
+      function updateTextureQuality() {
+        Object.values(textureCache).forEach(texture => {
+          texture.anisotropy = params.anisotropy;
+          texture.needsUpdate = true;
+        });
       }
 
       // header animation setup
@@ -230,17 +256,38 @@
 
       // gallery creation functions
       let galleryImages = [];
+      let availableImageIndices = [];
+      
+      function resetAvailableImages() {
+        // Reset the array of available image indices
+        availableImageIndices = [...Array(images.length).keys()];
+        // Shuffle the array to ensure random selection without repeats
+        for (let i = availableImageIndices.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [availableImageIndices[i], availableImageIndices[j]] = [availableImageIndices[j], availableImageIndices[i]];
+        }
+      }
+      
+      function getUniqueImageIndex() {
+        // If we've used all images, reset the available indices
+        if (availableImageIndices.length === 0) {
+          resetAvailableImages();
+        }
+        
+        // Get and remove an index from the available indices
+        return availableImageIndices.pop();
+      }
       
       function createImagePlane(row, col) {
-        const imageData = images[Math.floor(Math.random() * images.length)];
+        const imageIndex = getUniqueImageIndex();
+        const imageData = images[imageIndex];
         const geometry = new THREE.PlaneGeometry(
           params.imageWidth,
           params.imageHeight
         );
 
-        // Create texture loader for images
-        const textureLoader = new THREE.TextureLoader();
-        const texture = textureLoader.load(imageData.url);
+        // Use cached texture with higher quality settings
+        const texture = textureCache[imageData.url];
         
         const material = new THREE.MeshBasicMaterial({
           map: texture,
@@ -278,6 +325,17 @@
         });
 
         galleryImages = [];
+        
+        // Initialize the available image indices
+        resetAvailableImages();
+        
+        // Calculate total number of images needed
+        const totalImagesNeeded = params.rows * params.columns;
+        
+        // Check if we need more images than available in our array
+        if (totalImagesNeeded > images.length) {
+          console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Some images will repeat.`);
+        }
 
         for (let row = 0; row < params.rows; row++) {
           for (let col = 0; col < params.columns; col++) {
@@ -302,6 +360,7 @@
         camera.aspect = window.innerWidth / window.innerHeight;
         camera.updateProjectionMatrix();
         renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
       });
 
       // animation loop
