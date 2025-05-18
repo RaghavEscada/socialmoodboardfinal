@@ -1,20 +1,18 @@
 "use client";
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { Instagram, Linkedin, MessageCircle, ChevronRight, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-
+import { cn } from "@/lib/utils";
 import { Ready } from "@/components";
 
 // Define types for our data structures
-interface SocialLink {
+interface SocialLink {   
   id: number;
   title: string;
   href: string;
   icon: ReactNode;
 }
-
-
 
 interface Service {
   id: number;
@@ -25,10 +23,17 @@ interface Service {
   bulletins: string[];
 }
 
+// Added testimonial interface
+interface Testimonial {
+  name: string;
+  email?: string;
+  description: string;
+  img: string;
+}
+
 const socialLinks: SocialLink[] = [
   { id: 1, title: "Instagram", href: "https://www.instagram.com/thesocialmoodboard/", icon: <Instagram size={20} /> },
   { id: 2, title: "LinkedIn", href: "https://linkedin.com", icon: <Linkedin size={20} /> },
-  { id: 3, title: "WhatsApp", href: "https://wa.me/+1234567890?text=Dear%20Social%20Moodboard%20Team%2C%20I%20hope%20you%20are%20doing%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20services%20and%20how%20you%20can%20help%20with%20my%20social%20media%20strategy.%20Could%20you%20please%20provide%20more%20details%3F%20Looking%20forward%20to%20your%20response.%20Best%20regards%2C", icon: <MessageCircle size={20} /> },
 ];
 
 const services: Service[] = [
@@ -114,6 +119,214 @@ const services: Service[] = [
   },
 ];
 
+// Added testimonials data
+const testimonials: Testimonial[] = [
+  {
+    name: "Prassana",
+    email: "johndoe23@gmail.com",
+    description: "Absolutely thrilled with Social Moodboard's service! They captured my brand's voice perfectly, crafted engaging content, and boosted my social media presence with professionalism, creativity, and strategic flair. A big thumbs up and 5 stars from me!",
+    img: "https://img.freepik.com/free-photo/brunette-girl-posing_23-2148108748.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "JZ Lake View",
+    email: "alexjohnson@gmail.com",
+    description: "Partnering with Social Moodboard has elevated JZ's brand with creative, engaging content. Their fresh ideas and dedication have boosted our online presence and audience connection.",
+    img: "https://img.freepik.com/free-photo/portrait-man-laughing_23-2148859448.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "Yogita Dalvi, KDBS",
+    email: "emilydavis@gmail.com",
+    description: "We had a pleasant experience working with Vishishta for handling our social media handle. Her promptness and creativity is adorable!",
+    img: "https://img.freepik.com/free-photo/smiling-asian-woman_23-2147766303.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "Brew Merchant Café & Bar",
+    email: "michaelbrown@gmail.com",
+    description: "Working with Social Moodboard has been a total game-changer for us. Vishishta just *gets it*—she brings clarity, creativity, and structure to every campaign. From strategy to execution, everything feels intentional and aligned with our brand.",
+    img: "https://img.freepik.com/free-photo/portrait-modern-man_23-2147960990.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "Founder, Echo Bowl",
+    email: "sarahmiller@gmail.com",
+    description: "Vishishta is a powerhouse. She leads with insight, understands the pulse of the audience, and never delivers anything mediocre. The Social Moodboard team has helped us show up with consistency, edge, and style.",
+    img: "https://img.freepik.com/free-photo/portrait-smiling-blonde-woman_23-2148316635.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "Owner, Chill House Interiors",
+    description: "We came to Social Moodboard for content support, and stayed for the energy, professionalism, and genuine passion. Vishishta's strategies are sharp and rooted in what actually works. She treats our brand like her own.",
+    img: "https://img.freepik.com/premium-photo/woman-wearing-glasses-yellow-shirt-is-wearing-yellow-shirt_911060-133057.jpg?ga=GA1.1.156494736.1719603061&semt=ais_hybrid",
+  },
+  {
+    name: "Bloomhaus Interiors",
+    description: "We were stuck with repetitive content until Vishishta came in with her magic. Within 2 months, our engagement went up 4x. If you want someone who brings strategy and taste, this is it.",
+    img: "/api/placeholder/400/400",
+  },
+  {
+    name: "Layla Hair Studio",
+    description: "Social Moodboard helped us launch from scratch and build a full vibe. From brand voice to reel ideas—every detail was intentional and so us. Vishishta brings confidence and calm to the chaos.",
+    img: "/api/placeholder/400/400",
+  },
+];
+
+// Divide testimonials into rows for the marquee
+const firstRow = testimonials.slice(0, Math.ceil(testimonials.length / 2));
+const secondRow = testimonials.slice(Math.ceil(testimonials.length / 2));
+
+// Added logos data
+const logos = [
+  { name: "Babel", url: "/l1.png" },
+  { name: "Ngrok", url: "/l5.png" },
+  { name: "Webflow", url: "/l12.png" },
+  { name: "Perplexity", url: "/l9.png" },
+  { name: "Sanity", url: "/l2.png" },
+  { name: "Post CSS", url: "/l3.png" },
+  { name: "Post CSS", url: "/l7.png" },  
+  { name: "Post CSS", url: "/l8.png" },
+  { name: "Post CSS", url: "/l6.png" },
+  { name: "Post CSS", url: "/l10.png" },
+  { name: "Post CSS", url: "/l11.png" },
+  { name: "Post CSS", url: "/l8.png" },
+  { name: "Post CSS", url: "/l4.png" },
+];
+
+// Marquee component
+interface MarqueeProps {
+  className?: string;
+  reverse?: boolean;
+  pauseOnHover?: boolean;
+  children?: React.ReactNode;
+  vertical?: boolean;
+  repeat?: number;
+  [key: string]: any;
+}
+ 
+function Marquee({
+  className,
+  reverse,
+  pauseOnHover = false,
+  children,
+  vertical = false,
+  repeat = 4,
+  ...props
+}: MarqueeProps) {
+  return (
+    <div
+      {...props}
+      className={cn(
+        "group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]",
+        {
+          "flex-row": !vertical,
+          "flex-col": vertical,
+        },
+        className
+      )}
+    >
+      {Array(repeat)
+        .fill(0)
+        .map((_, i) => (
+          <div
+            key={i}
+            className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
+              "animate-marquee flex-row": !vertical,
+              "animate-marquee-vertical flex-col": vertical,
+              "group-hover:[animation-play-state:paused]": pauseOnHover,
+              "[animation-direction:reverse]": reverse,
+            })}
+          >
+            {children}
+          </div>
+        ))}
+    </div>
+  );
+}
+
+// ReviewCard component
+const ReviewCard = ({ img, name, email, description }: Testimonial) => {
+  return (
+    <figure className="relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4 border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05] dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]">
+      <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium text-white dark:text-white">
+            {name}
+          </figcaption>
+        </div>
+      </div>
+      <blockquote className="mt-2 text-sm text-white">{description}</blockquote> 
+    </figure>
+  );
+};
+
+// LogoCloud component
+const LogoCloud = () => {
+  return (
+    <div className="w-full py-12 bg-slate-400 pt-10 pb-20">
+      <div className="mx-auto pt-10 w-full px-2 md:px-4">
+        <div
+          className="group relative mt-6 flex gap-6 overflow-hidden p-2"
+          style={{
+            maskImage:
+              "linear-gradient(to left, transparent 0%, black 20%, black 80%, transparent 95%)",
+          }}
+        >
+          {Array(5)
+            .fill(null)
+            .map((_, index) => (
+              <div
+                key={index}
+                className="flex shrink-0 animate-logo-cloud flex-row justify-around gap-6"
+              >
+                {logos.map((logo, key) => (
+                  <img
+                    key={key}
+                    src={logo.url}
+                    className="h-28 w-42 px-2"
+                    alt={logo.name}
+                  />
+                ))}
+              </div>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// Testimonial component
+const TestimonialSection = () => {
+  return (
+    <div className="relative flex h-auto w-full flex-col items-center font-['Gilda_Display'] bg-black justify-center overflow-hidden rounded-lg border  md:shadow-xl">
+      <div className="mx-auto max-w-4xl p-4 text-center sm:py-14">
+        <h2 className="mb-3 text-4xl font-['Gilda_Display'] text-white dark:text-white md:text-lg">
+          Empowering
+          <br />
+          <span className="bg-red-700 bg-clip-text text-transparent italic">
+            Individuals & Businesses
+          </span>
+        </h2>
+        <p className="text-2xl p-7 text-white italic dark:text-white md:text-xl">
+          "Ordinary doesn't live here. We craft the extraordinary, one bold idea at a time."
+        </p>
+      </div>
+
+      <Marquee pauseOnHover className="[--duration:20s]">
+        {firstRow.map((review) => (
+          <ReviewCard key={review.email || review.name} {...review} />
+        ))}
+      </Marquee> 
+      <Marquee reverse pauseOnHover className="[--duration:20s]">
+        {secondRow.map((review) => (
+          <ReviewCard key={review.email || review.name} {...review} />
+        ))}
+      </Marquee>
+     
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#494949] dark:from-[#494949]"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#494949] dark:from-[#494949]"></div>
+      
+      <LogoCloud />
+    </div>
+  );
+};
+
 // ServicePopup component for showing bulletins
 const ServicePopup = ({
   service,
@@ -175,6 +388,23 @@ export default function About() {
   const closePopup = () => {
     setActivePopup(null);
   };
+
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    // If you still want to manually initialize Locomotive Scroll
+    // (though using LocomotiveScrollProvider is recommended)
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll({
+       
+      });
+      // Optionally, you can destroy the instance when the component unmounts
+      return () => {
+        locomotiveScroll.destroy();
+      };
+    })();
+  }, []);
 
   return (
     <>
@@ -294,8 +524,14 @@ export default function About() {
           ))}
         </div>
 
+        {/* Added Testimonial Section */}
+        <div className="w-full max-w-6xl mx-auto relative z-10 mb-40">
+         
+          <TestimonialSection />
+        </div>
+
         {/* Social Links Section - More elegant spacing */}
-        <div className="pt-24 border-t border-gray-800 relative z-10">
+        <div className="pt-24 border-t border-gray-400 relative z-10">
           <h2 className="text-2xl font-normal mb-16 text-center font-['Gilda_Display'] text-white opacity-100">
             Connect With Us
           </h2>
