@@ -236,26 +236,9 @@
       padding: 0 4em;
     }
 
-    .h-stripe {
-      position: absolute;
-      padding: 1em;
-      right: -16rem;
-      transform: rotate(-90deg);
-      width: 100%;
-      background: #000;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: "Monument Extended";
-      overflow: hidden;
-    }
+    
 
-    .h-stripe span {
-      position: relative;
-    }
-
-    /* col #2 */
+    
 
     .text {
       position: relative;
@@ -421,11 +404,7 @@
         padding: 2em;
       }
       
-      .h-stripe {
-        right: -1em;
-        padding: 0rem;
-      }
-      
+    
       /* Let's talk section */
       .lets-talk p {
         font-size: 1rem;
@@ -476,7 +455,7 @@
             <div class="project-list">
               <p>We’re not just another consultancy —we’re the ones brands call when they’re ready to stop blending in. Social Moodboard is where bold ideas meet strategic execution, crafting brands that don’t just exist but own their space.</p>
             </div>
-            <div class="h-stripe"><span>Social Moodboard</span></div>
+      
           </div>
           <div class="col circle-text flex-center">
             <div class="text">
@@ -580,17 +559,6 @@
     },
   });
 
-  gsap.from(".h-stripe", 1, {
-    top: "500%",
-    ease: "power4.out",
-    delay: 3.5,
-  });
-
-  gsap.from(".h-stripe span", 1, {
-    top: "300px",
-    ease: "power4.out",
-    delay: 4,
-  });
 
   gsap.from(".line", 1, {
     scaleX: 0,

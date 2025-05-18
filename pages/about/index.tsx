@@ -166,6 +166,12 @@ export default function About() {
       title: "Food & Beverage Brands",
      
       imageUrl: "/i5.jpg"
+    },
+    {
+      id: 6,
+      title: "Corporate Houses",
+  
+      imageUrl: "/ch.png"
     }
   ];
   
@@ -240,7 +246,7 @@ export default function About() {
       </div>
 
               {/* Niches Section - UPDATED WITH FIXED IMAGES */}
-              <div data-scroll-section className="relative mt-32 bg-neutral-800 px-6 md:px-10 py-20">
+              <div data-scroll-section className="relative mt-32 bg-transparent px-6 md:px-10 py-20">
   {/* Background Pattern */}
   <div className="absolute inset-0 opacity-5">
     <div className="h-full w-full bg-[linear-gradient(#ffffff12_1px,transparent_1px),linear-gradient(to_right,#ffffff12_1px,transparent_1px)] bg-[size:24px_24px]"></div>
@@ -250,6 +256,7 @@ export default function About() {
   <div className="relative z-10 mb-20">
     <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-white">
       Niches <span className="relative inline-block">
+      <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
         <span className="italic text-red-500">Worked In</span>
         <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 animate-expand"></span>
       </span>
@@ -276,7 +283,7 @@ export default function About() {
             className="object-cover transition-transform duration-700 group-hover:scale-110"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
+          <div className="absolute inset-0  opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
           
           {/* Hover indicator */}
           <div className="absolute top-4 right-4 bg-red-500 rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
