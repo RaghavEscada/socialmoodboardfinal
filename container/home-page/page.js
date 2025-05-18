@@ -14,9 +14,9 @@ const images = [
   'img1.jpg',
   '9.png',
   'h9.jpeg',
-  'h10.jpeg',
-  'h11.jpg',
-  '15.png',
+  '18.png',
+  '17.png',
+  '7.png',
 ];
 
 export default function Home() {

@@ -115,23 +115,23 @@ const services: Service[] = [
 ];
 
 // ServicePopup component for showing bulletins
-const ServicePopup = ({ 
-  service, 
-  isOpen, 
-  onClose 
-}: { 
-  service: Service; 
-  isOpen: boolean; 
+const ServicePopup = ({
+  service,
+  isOpen,
+  onClose
+}: {
+  service: Service;
+  isOpen: boolean;
   onClose: () => void;
 }) => {
   if (!isOpen) return null;
-  
+
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
       <div className="bg-gray-900 border border-red-600/30 rounded-xl w-full max-w-md relative overflow-hidden animate-fadeIn">
         {/* Header with gradient */}
         <div className="bg-gradient-to-r from-red-800 to-red-950 p-6 relative">
-          <button 
+          <button
             onClick={onClose}
             className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
           >
@@ -139,7 +139,7 @@ const ServicePopup = ({
           </button>
           <h3 className="font-['Gilda_Display'] text-3xl text-white">{service.title}</h3>
         </div>
-        
+
         {/* Bulletins section */}
         <div className="p-8">
           <h4 className="text-red-500 mb-4 font-['Gilda_Display'] text-xl">Services Include:</h4>
@@ -151,10 +151,10 @@ const ServicePopup = ({
               </li>
             ))}
           </ul>
-          
+
           {/* Action button */}
           <div className="mt-8 flex justify-center">
-          
+
           </div>
         </div>
       </div>
@@ -165,12 +165,12 @@ const ServicePopup = ({
 export default function About() {
   // State for controlling which service popup is showing
   const [activePopup, setActivePopup] = useState<string | null>(null);
-  
+
   // Function to open popup for a specific service
   const openPopup = (serviceId: number) => {
     setActivePopup(serviceId.toString());
   };
-  
+
   // Function to close popup
   const closePopup = () => {
     setActivePopup(null);
@@ -241,7 +241,7 @@ export default function About() {
                       alt={service.title}
                       width={600}
                       height={450}
-                      className="w-full h-auto object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105 opacity-100" 
+                      className="w-full h-auto object-cover aspect-[4/3] transition-transform duration-700 group-hover:scale-105 opacity-100"
                     />
                   </div>
                 </div>
@@ -287,7 +287,7 @@ export default function About() {
                 <ServicePopup
                   service={service}
                   isOpen={activePopup === String(service.id)}
-                  onClose={closePopup} 
+                  onClose={closePopup}
                 />
               </div>
             </div>
@@ -315,72 +315,6 @@ export default function About() {
             ))}
           </div>
         </div>
-
-        {/* About the Founder Section */}
-        <div className="relative z-10 bg-transparent lg:py-32 overflow-hidden">
-          {/* Decorative elements */}
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-red-600 blur-3xl"></div>
-            <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-red-800 blur-3xl"></div>
-          </div>
-
-          <div className="container mx-auto px-6 relative">
-            {/* Heading with refined typography */}
-            <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-              Behind <span className="italic text-red-500 relative">
-                Social Moodboard
-                <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-              </span>
-            </h2>
-            
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16 mx-auto max-w-7xl">
-              {/* Image Section with enhanced styling */}
-              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
-                <Image
-                  src="/vis.png" 
-                  alt="Vishishta Banerjee"
-                  width={320}
-                  height={320}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              {/* Text Section with better layout */}
-              <div className="max-w-xl text-center lg:text-left mt-12 lg:mt-0">
-                <p className="text-white/90 text-lg font-light mb-8 font-['Gilda_Display'] leading-relaxed">
-                  With over four years of experience, I, <strong className="text-red-400">Vishishta Banerjee</strong>, have worked with brands across industries, transforming their online presence. I create strategies that don&apos;t just &quot;look good&quot; but actually drive results. From F&B hotspots to corporate houses, I&apos;ve helped businesses craft an identity, connect with their audience, and, most importantly—convert.
-                </p>
-                
-                {/* Enhanced button with animation */}
-                <Link
-                  href="/about"
-                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  <span className="font-['Gilda_Display']">Learn More About Us</span>
-                  <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Niches Section */}
-        <div className="mt-32">
-          <h2 className="text-4xl md:text-5xl lg:text-7xl mb-16 text-center font-['Gilda_Display'] text-white">
-            Niches <span className="italic text-red-500 relative">
-              Worked In
-              <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
-            </span>
-          </h2>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          
-          </div>
-        </div>
-
       </section>
       <div>
         <Ready />

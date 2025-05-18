@@ -194,7 +194,7 @@ export default function About() {
       {/* Header Section - Added more vertical spacing */}
       <div className="text-center max-w-4xl mx-auto relative z-10 mb-40">
         <div className="mb-12">
-          <span className="px-6 py-2 bg-[#494949] tracking-tight font-bold rounded-full text-lg text-white opacity-100 border border-gray-800 uppercase">
+          <span className="px-6 py-2 bg-[#494949] tracking-tight font-bold rounded-full text-sm text-white opacity-100 border border-gray-800 uppercase">
             Elevate Your Digital Presence
           </span>
         </div>
@@ -362,9 +362,9 @@ export default function About() {
               {/* Enhanced button with animation */}
               <a
                 href="/about"
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+                className="inline-flex items-center m-16 px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 text-white font-light rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
               >
-                <span className="font-['Gilda_Display']">Learn More About Us</span>
+                <span className="font-['Gilda_Display'] ">Learn More About Us</span>
                 <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                 </svg>
@@ -379,7 +379,8 @@ export default function About() {
         <h2 className="text-4xl md:text-5xl lg:text-7xl text-center font-['Gilda_Display'] text-white">
           Niches <span className="relative inline-block">
             <span className="italic text-red-500">Worked In</span>
-            <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-red-500 animate-expand"></span>
+            <span className="absolute -bottom-2 left-0 w-full h-px bg-red-500 opacity-50"></span>
+
           </span>
         </h2>
         <div className="mt-4 max-w-xl mx-auto">
