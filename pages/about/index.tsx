@@ -140,54 +140,90 @@ export default function About() {
     {
       id: 1,
       title: "Home Automation & Brands",
-     
       imageUrl: "/i1.jpg"
     },
     {
       id: 2,
       title: "Interior Design Houses",
-     
       imageUrl: "/i2.jpg"
     },
     {
       id: 3,
       title: "Building Solutions",
-      
       imageUrl: "/i3.jpg"
     },
     {
       id: 4,
       title: "Salons",
-    
       imageUrl: "/i4.jpg"
     },
     {
       id: 5,
       title: "Food & Beverage Brands",
-     
       imageUrl: "/i5.jpg"
     },
     {
       id: 6,
       title: "Corporate Houses",
-  
       imageUrl: "/ch.png"
     }
   ];
+  
+  // Reference for the iframe
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  
+  // Effect to handle iframe loading and communication
+  useEffect(() => {
+    const handleIframeLoad = () => {
+      // Ensure iframe exists
+      if (iframeRef.current && iframeRef.current.contentWindow) {
+        try {
+          // Attempt to access and modify the iframe's scrolling behavior
+          const iframeWindow = iframeRef.current.contentWindow;
+          
+          // This will post a message to the iframe to disable scrolling
+          iframeWindow.postMessage({ action: 'disableScroll' }, '*');
+          
+          // Add a class to indicate the iframe is loaded
+          iframeRef.current.classList.add('iframe-loaded');
+        } catch (e) {
+          console.error("Error setting up iframe:", e);
+        }
+      }
+    };
+    
+    // Attach load event listener
+    const iframe = iframeRef.current;
+    if (iframe) {
+      iframe.addEventListener('load', handleIframeLoad);
+    }
+    
+    // Clean up
+    return () => {
+      if (iframe) {
+        iframe.removeEventListener('load', handleIframeLoad);
+      }
+    };
+  }, []);
   
   return (
     <>
       <Curve backgroundColor={"#f1f1f1"}>
         <div className="bg-[#494949]">
           <div className="w-full">
-            {/* Fullscreen Iframe - OUTSIDE of Locomotive Scroll */}
-            <section className="w-full h-screen flex flex-col overflow-hidden">
-              <div className="relative w-full h-full overflow-hidden">
+            {/* Fullscreen Iframe - with improved handling */}
+            <section className="w-full h-screen flex flex-col">
+              <div className="relative w-full h-full">
                 <iframe
+                  ref={iframeRef}
                   src="/about.html"
                   title="About Page"
                   className="w-full h-full border-none"
-                  style={{ overflow: 'hidden' }}
+                  scrolling="no"
+                  style={{ 
+                    overflow: 'hidden',
+                    pointerEvents: 'auto' // Allow interaction but disable scrolling
+                  }}
                 />
               </div>
             </section>
@@ -214,9 +250,11 @@ export default function About() {
             {/* Image Section with enhanced styling */}
             <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden shadow-2xl transform hover:scale-105 transition-all duration-500 relative">
               <div className="absolute inset-0 bg-gradient-to-tr from-red-600/30 to-transparent mix-blend-overlay z-10"></div>
-              <img
+              <Image
                 src="/vis.png"
                 alt="Vishishta Banerjee"
+                width={320}
+                height={320}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -273,7 +311,7 @@ export default function About() {
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-300"></div>
               
               {/* Hover indicator */}
               <div className="absolute top-4 right-4 bg-red-500 rounded-full p-2 opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
