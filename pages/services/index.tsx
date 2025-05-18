@@ -410,15 +410,16 @@ export default function About() {
 
         {/* Header Section - Added more vertical spacing */}
         <div className="text-center max-w-4xl mx-auto relative z-10 mb-40">
-          <div className="mb-12">
-            <span className="px-6 py-2 bg-[#494949] tracking-tight font-bold rounded-full text-lg text-white opacity-100 border border-gray-800 uppercase">
-              Elevate Your Digital Presence
-            </span>
-          </div>
+        <div className="mb-12">
+          <span className="px-6 py-2 bg-[#494949] tracking-tight font-bold rounded-full text-sm text-white opacity-100 border border-gray-800 uppercase">
+            Elevate Your Digital Presence
+          </span>
+        </div>
 
-          <h1 className="font-['Gilda_Display'] text-6xl sm:text-6xl md:text-7xl font-normal mb-12 tracking-tight leading-tight text-white opacity-100">
-            Welcome to <span className="text-red-600 italic">The Social Moodboard</span>
-          </h1>
+        <h1 className="font-['Gilda_Display'] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal mb-12 tracking-tight leading-tight text-white opacity-100 text-center">
+  Welcome to
+  <span className="block sm:inline text-red-600 italic"> Social Moodboard</span>
+</h1>
 
           <p className="text-white opacity-100 text-2xl max-w-2xl mx-auto font-light leading-relaxed mt-6 font-['Gilda_Display']">
             We craft bespoke social media strategies, visual identities, optimization solutions, and forward-thinking digital strategies that elevate your brand&apos;s presence.
