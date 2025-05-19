@@ -145,7 +145,7 @@ const ServicePopup = ({ service, isOpen, onClose }: { service: any, isOpen: bool
         <div className="bg-black p-6 relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-black hover:text-red-500 transition-colors"
+            className="absolute top-4 right-4 text-red-500 hover:text-white transition-colors"
           >
             <X size={24} />
           </button>
