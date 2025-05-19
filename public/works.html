@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social Moodboard</title>
-    <style>* {
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Moodboard</title>
+  <style>
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    
+
     html,
     body {
       width: 100%;
@@ -17,13 +19,13 @@
       background-color: #494949;
       overflow: hidden;
     }
-    
+
     canvas {
       position: fixed;
       top: 0;
       left: 0;
     }
-    
+
     nav {
       position: fixed;
       top: 0;
@@ -34,7 +36,7 @@
       justify-content: center;
       z-index: 2;
     }
-    
+
     nav p {
       text-transform: uppercase;
       font-family: Arial, sans-serif;
@@ -45,7 +47,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
-    
+
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -56,7 +58,7 @@
       justify-content: space-between;
       z-index: 2;
     }
-    
+
     .bottom-nav button {
       text-transform: uppercase;
       font-family: Arial, sans-serif;
@@ -70,16 +72,16 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    
+
     .bottom-nav button:hover {
       background-color: rgba(255, 255, 255, 0.2);
     }
-    
+
     .bottom-nav button.active {
       background-color: #d4f70c;
       color: #000;
     }
-    
+
     .header {
       position: fixed;
       top: 50%;
@@ -91,7 +93,7 @@
       will-change: transform;
       z-index: 2;
     }
-    
+
     h1 {
       text-transform: uppercase;
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -105,276 +107,298 @@
 
     h2 {
       font-family: 'Times New Roman', Times, serif;
-      color:white;
-      font-size:50px;
+      color: white;
+      font-size: 50px;
     }
-    </style>
-  </head>
-  <body>
-    <nav>
-     
-    </nav>
+  </style>
+</head>
 
-    <div class="header">
-      <h2>MOOD. ENERGY. IMPACT.</h2>
-    </div>
+<body>
+  <nav>
 
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
-    <script>
-      // Using actual image files from the public folder
-      const images = [
-        { url: "/w1.jpeg" },
-        { url: "/w2.jpg" },
-        { url: "/w3.jpg" },
-        { url: "/w4.jpg" },
-        { url: "/w5.jpg" },
-        { url: "/w6.jpeg" },
-        { url: "/w14.jpg" },
-        { url: "/w8.jpg" },
-        { url: "/w9.jpg" },
-        { url: "/w10.jpg" },
-        { url: "/w11.jpg" },
-        { url: "/img3.jpg" },
-        { url: "/w18.jpg" },
-      ];
+  </nav>
 
-      // configuration parameters
-      const params = {
-        rows: 9,
-        columns: 9,
-        curvature: 5,
-        spacing: 8,
-        imageWidth: 4.5,
-        imageHeight: 7,
-        depth: 7.5,
-        elevation: 0,
-        lookAtRange: 20,
-        verticalCurvature: 0.5,
-        anisotropy: 16, // Added for better image quality
-      };
+  <div class="header">
+    <h2>MOOD. ENERGY. IMPACT.</h2>
+  </div>
 
-      // scene setup
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        25,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
-      );
-      camera.position.set(0, 0, 40);
 
-      const renderer = new THREE.WebGLRenderer({ 
-        antialias: true,
-        powerPreference: "high-performance" // Added for better performance
-      });
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setClearColor(0x494949);
-      renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
-      document.body.appendChild(renderer.domElement);
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+  <script>
+    // Using actual image files from the public folder
+    const images = [
+      { url: "/w1.webp" },
+      { url: "/w2.webp" },
+      { url: "/w3.webp" },
+      { url: "/w4.webp" },
+      { url: "/w5.webp" },
+      { url: "/w6.webp" },
+      { url: "/w14.webp" },
+      { url: "/w8.webp" },
+      { url: "/w9.webp" },
+      { url: "/w10.webp" },
+      { url: "/w11.webp" },
+      { url: "/w12.webp" },
+      { url: "/w13.webp" },
+      { url: "/w15.webp" },
+      { url: "/w16.webp" },
+      { url: "/w17.webp" },
+      { url: "/w18.webp" },
+      { url: "/p1.webp" },
+      { url: "/p1.webp" },
+      { url: "/p2.webp" },
+      { url: "/p3.webp" },
+      { url: "/p4.webp" },
+      { url: "/p5.webp" },
+      { url: "/p6.webp" },
+      { url: "/p7.webp" },
+      { url: "/p8.webp" },
+      { url: "/p9.webp" },
+      { url: "/p10.webp" },
+      { url: "/p11.webp" },
+      { url: "/p12.webp" },
+      { url: "/p13.webp" },
+      { url: "/p14.webp" },
+      { url: "/p15.webp" },
+      { url: "/p16.webp" },
+      { url: "/p17.webp" },
+      { url: "/p18.webp" },
+      { url: "/p19.webp" },
+      { url: "/p20.webp" }
 
-      // Create a texture loader with improved settings
-      const textureLoader = new THREE.TextureLoader();
-      
-      // Enable anisotropic filtering for all textures
-      const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
-      params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
+    ];
 
-      // Load all textures in advance with high quality settings
-      const textureCache = {};
-      images.forEach(image => {
-        const texture = textureLoader.load(image.url);
+    // configuration parameters
+    const params = {
+      // Reduce rows and columns to avoid image repetition
+      // We have 17 images, so we'll use 4x4 = 16 slots
+      rows: 4,
+      columns: 4,
+      curvature: 5,
+      spacing: 12, // Increased spacing to fill more of the view
+      imageWidth: 7, // Increased image size
+      imageHeight: 9, // Increased image size
+      depth: 7.5,
+      elevation: 0,
+      lookAtRange: 20,
+      verticalCurvature: 0.5,
+      anisotropy: 16, // Added for better image quality
+    };
+
+    // scene setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      25,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(0, 0, 40);
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      powerPreference: "high-performance" // Added for better performance
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x494949);
+    renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
+    document.body.appendChild(renderer.domElement);
+
+    // Create a texture loader with improved settings
+    const textureLoader = new THREE.TextureLoader();
+
+    // Enable anisotropic filtering for all textures
+    const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+    params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
+
+    // Load all textures in advance with high quality settings
+    const textureCache = {};
+    images.forEach(image => {
+      const texture = textureLoader.load(image.url);
+      texture.anisotropy = params.anisotropy;
+      texture.minFilter = THREE.LinearMipMapLinearFilter;
+      texture.magFilter = THREE.LinearFilter;
+      texture.generateMipmaps = true;
+      textureCache[image.url] = texture;
+    });
+
+    // debug mode setup
+    const DEBUG_MODE = false;
+    let gui;
+    if (DEBUG_MODE) {
+      gui = new dat.GUI();
+      gui.add(params, "rows", 1, 8).onChange(updateGallery);
+      gui.add(params, "columns", 1, 10).onChange(updateGallery);
+      gui.add(params, "imageWidth", 1, 10).onChange(updateGallery);
+      gui.add(params, "imageHeight", 1, 10).onChange(updateGallery);
+      gui.add(params, "spacing", 2, 20).onChange(updateGallery);
+      gui.add(params, "curvature", 0, 10).onChange(updateGallery);
+      gui.add(params, "verticalCurvature", 0, 2).onChange(updateGallery);
+      gui.add(params, "depth", 5, 50).onChange(updateGallery);
+      gui.add(params, "elevation", -10, 10).onChange(updateGallery);
+      gui.add(params, "lookAtRange", 5, 50).name("Look Range");
+      gui.add(params, "anisotropy", 1, maxAnisotropy).name("Texture Quality").onChange(updateTextureQuality);
+    }
+
+    function updateTextureQuality() {
+      Object.values(textureCache).forEach(texture => {
         texture.anisotropy = params.anisotropy;
-        texture.minFilter = THREE.LinearMipMapLinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.generateMipmaps = true;
-        textureCache[image.url] = texture;
+        texture.needsUpdate = true;
+      });
+    }
+
+    // header animation setup
+    const header = document.querySelector(".header");
+    let headerRotationX = 0;
+    let headerRotationY = 0;
+    let headerTranslateZ = 0;
+
+    // mouse movement variables
+    let mouseX = 0;
+    let mouseY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    const lookAtTarget = new THREE.Vector3(0, 0, 0);
+
+    // gallery mathematics functions
+    function calculateRotations(x, y) {
+      const a = 1 / (params.depth * params.curvature);
+      const slopeY = -2 * a * x;
+      const rotationY = Math.atan(slopeY);
+
+      const verticalFactor = params.verticalCurvature;
+      const maxYDistance = (params.rows * params.spacing) / 2;
+      const normalizedY = y / maxYDistance;
+      const rotationX = normalizedY * verticalFactor;
+
+      return { rotationX, rotationY };
+    }
+
+    function calculatePosition(row, col) {
+      let x = (col - params.columns / 2) * params.spacing;
+      let y = (row - params.rows / 2) * params.spacing;
+
+      let z = (x * x) / (params.depth * params.curvature);
+
+      const normalizedY = y / ((params.rows * params.spacing) / 2);
+      z += Math.abs(normalizedY) * normalizedY * params.verticalCurvature * 5;
+
+      y += params.elevation;
+
+      const { rotationX, rotationY } = calculateRotations(x, y);
+
+      return { x, y, z, rotationX, rotationY };
+    }
+
+    // gallery creation functions
+    let galleryImages = [];
+    let usedImageIndices = new Set(); // Track which images have been used
+
+    function createImagePlane(row, col) {
+      // Calculate total images needed and check against available unique images
+      const totalImagesNeeded = params.rows * params.columns;
+
+      // Get a random unused image index
+      let imageIndex;
+      do {
+        imageIndex = Math.floor(Math.random() * images.length);
+      } while (usedImageIndices.has(imageIndex) && usedImageIndices.size < images.length);
+
+      // Add this index to used set
+      usedImageIndices.add(imageIndex);
+
+      const imageData = images[imageIndex];
+      const geometry = new THREE.PlaneGeometry(
+        params.imageWidth,
+        params.imageHeight
+      );
+
+      // Use cached texture with higher quality settings
+      const texture = textureCache[imageData.url];
+
+      const material = new THREE.MeshBasicMaterial({
+        map: texture,
+        side: THREE.DoubleSide,
       });
 
-      // debug mode setup
-      const DEBUG_MODE = false;
-      let gui;
-      if (DEBUG_MODE) {
-        gui = new dat.GUI();
-        gui.add(params, "rows", 1, 8).onChange(updateGallery);
-        gui.add(params, "columns", 1, 10).onChange(updateGallery);
-        gui.add(params, "imageWidth", 1, 10).onChange(updateGallery);
-        gui.add(params, "imageHeight", 1, 10).onChange(updateGallery);
-        gui.add(params, "spacing", 2, 10).onChange(updateGallery);
-        gui.add(params, "curvature", 0, 10).onChange(updateGallery);
-        gui.add(params, "verticalCurvature", 0, 2).onChange(updateGallery);
-        gui.add(params, "depth", 5, 50).onChange(updateGallery);
-        gui.add(params, "elevation", -10, 10).onChange(updateGallery);
-        gui.add(params, "lookAtRange", 5, 50).name("Look Range");
-        gui.add(params, "anisotropy", 1, maxAnisotropy).name("Texture Quality").onChange(updateTextureQuality);
-      }
+      const plane = new THREE.Mesh(geometry, material);
+      const { x, y, z, rotationX, rotationY } = calculatePosition(row, col);
 
-      function updateTextureQuality() {
-        Object.values(textureCache).forEach(texture => {
-          texture.anisotropy = params.anisotropy;
-          texture.needsUpdate = true;
-        });
-      }
+      plane.position.set(x, y, z);
+      plane.rotation.x = rotationX;
+      plane.rotation.y = rotationY;
 
-      // header animation setup
-      const header = document.querySelector(".header");
-      let headerRotationX = 0;
-      let headerRotationY = 0;
-      let headerTranslateZ = 0;
+      plane.userData.basePosition = { x, y, z };
+      plane.userData.baseRotation = { x: rotationX, y: rotationY, z: 0 };
+      plane.userData.parallaxFactor = Math.random() * 0.5 + 0.5;
+      plane.userData.randomOffset = {
+        x: Math.random() * 2 - 1,
+        y: Math.random() * 2 - 1,
+        z: Math.random() * 2 - 1,
+      };
+      plane.userData.rotationModifier = {
+        x: Math.random() * 0.15 - 0.075,
+        y: Math.random() * 0.15 - 0.075,
+        z: Math.random() * 0.2 - 0.1,
+      };
+      plane.userData.phaseOffset = Math.random() * Math.PI * 2;
 
-      // mouse movement variables
-      let mouseX = 0;
-      let mouseY = 0;
-      let targetX = 0;
-      let targetY = 0;
-      const lookAtTarget = new THREE.Vector3(0, 0, 0);
+      return plane;
+    }
 
-      // gallery mathematics functions
-      function calculateRotations(x, y) {
-        const a = 1 / (params.depth * params.curvature);
-        const slopeY = -2 * a * x;
-        const rotationY = Math.atan(slopeY);
-
-        const verticalFactor = params.verticalCurvature;
-        const maxYDistance = (params.rows * params.spacing) / 2;
-        const normalizedY = y / maxYDistance;
-        const rotationX = normalizedY * verticalFactor;
-
-        return { rotationX, rotationY };
-      }
-
-      function calculatePosition(row, col) {
-        let x = (col - params.columns / 2) * params.spacing;
-        let y = (row - params.rows / 2) * params.spacing;
-
-        let z = (x * x) / (params.depth * params.curvature);
-
-        const normalizedY = y / ((params.rows * params.spacing) / 2);
-        z += Math.abs(normalizedY) * normalizedY * params.verticalCurvature * 5;
-
-        y += params.elevation;
-
-        const { rotationX, rotationY } = calculateRotations(x, y);
-
-        return { x, y, z, rotationX, rotationY };
-      }
-
-      // gallery creation functions
-      let galleryImages = [];
-      let availableImageIndices = [];
-      
-      function resetAvailableImages() {
-        // Reset the array of available image indices
-        availableImageIndices = [...Array(images.length).keys()];
-        // Shuffle the array to ensure random selection without repeats
-        for (let i = availableImageIndices.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [availableImageIndices[i], availableImageIndices[j]] = [availableImageIndices[j], availableImageIndices[i]];
-        }
-      }
-      
-      function getUniqueImageIndex() {
-        // If we've used all images, reset the available indices
-        if (availableImageIndices.length === 0) {
-          resetAvailableImages();
-        }
-        
-        // Get and remove an index from the available indices
-        return availableImageIndices.pop();
-      }
-      
-      function createImagePlane(row, col) {
-        const imageIndex = getUniqueImageIndex();
-        const imageData = images[imageIndex];
-        const geometry = new THREE.PlaneGeometry(
-          params.imageWidth,
-          params.imageHeight
-        );
-
-        // Use cached texture with higher quality settings
-        const texture = textureCache[imageData.url];
-        
-        const material = new THREE.MeshBasicMaterial({
-          map: texture,
-          side: THREE.DoubleSide,
-        });
-
-        const plane = new THREE.Mesh(geometry, material);
-        const { x, y, z, rotationX, rotationY } = calculatePosition(row, col);
-
-        plane.position.set(x, y, z);
-        plane.rotation.x = rotationX;
-        plane.rotation.y = rotationY;
-
-        plane.userData.basePosition = { x, y, z };
-        plane.userData.baseRotation = { x: rotationX, y: rotationY, z: 0 };
-        plane.userData.parallaxFactor = Math.random() * 0.5 + 0.5;
-        plane.userData.randomOffset = {
-          x: Math.random() * 2 - 1,
-          y: Math.random() * 2 - 1,
-          z: Math.random() * 2 - 1,
-        };
-        plane.userData.rotationModifier = {
-          x: Math.random() * 0.15 - 0.075,
-          y: Math.random() * 0.15 - 0.075,
-          z: Math.random() * 0.2 - 0.1,
-        };
-        plane.userData.phaseOffset = Math.random() * Math.PI * 2;
-
-        return plane;
-      }
-
-      function updateGallery() {
-        galleryImages.forEach((plane) => {
-          scene.remove(plane);
-        });
-
-        galleryImages = [];
-        
-        // Initialize the available image indices
-        resetAvailableImages();
-        
-        // Calculate total number of images needed
-        const totalImagesNeeded = params.rows * params.columns;
-        
-        // Check if we need more images than available in our array
-        if (totalImagesNeeded > images.length) {
-          console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Some images will repeat.`);
-        }
-
-        for (let row = 0; row < params.rows; row++) {
-          for (let col = 0; col < params.columns; col++) {
-            const plane = createImagePlane(row, col);
-            galleryImages.push(plane);
-            scene.add(plane);
-          }
-        }
-      }
-
-      // event listeners
-      document.addEventListener("mousemove", (event) => {
-        mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-        mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-
-        headerRotationX = -mouseY * 30;
-        headerRotationY = mouseX * 30;
-        headerTranslateZ = Math.abs(mouseX * mouseY) * 50;
+    function updateGallery() {
+      galleryImages.forEach((plane) => {
+        scene.remove(plane);
       });
 
-      window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-      });
+      galleryImages = [];
 
-      // animation loop
-      function animate() {
-        requestAnimationFrame(animate);
+      // Reset used images tracking
+      usedImageIndices = new Set();
 
-        // update header transform
-        const targetTransform = `
+      // Ensure we're not trying to display more unique images than we have
+      const totalImagesNeeded = params.rows * params.columns;
+      if (totalImagesNeeded > images.length) {
+        console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Adjusting rows/columns.`);
+        // Adjust rows/columns to match available images
+        const sqrtImages = Math.floor(Math.sqrt(images.length));
+        params.rows = sqrtImages;
+        params.columns = Math.floor(images.length / sqrtImages);
+      }
+
+      for (let row = 0; row < params.rows; row++) {
+        for (let col = 0; col < params.columns; col++) {
+          const plane = createImagePlane(row, col);
+          galleryImages.push(plane);
+          scene.add(plane);
+        }
+      }
+    }
+
+    // event listeners
+    document.addEventListener("mousemove", (event) => {
+      mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+
+      headerRotationX = -mouseY * 30;
+      headerRotationY = mouseX * 30;
+      headerTranslateZ = Math.abs(mouseX * mouseY) * 50;
+    });
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+    });
+
+    // animation loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // update header transform
+      const targetTransform = `
           translate(-50%, -50%)
           perspective(1000px)
           rotateX(${headerRotationX}deg)
@@ -382,86 +406,87 @@
           translateZ(${headerTranslateZ}px)
         `;
 
-        header.style.transform = targetTransform;
-        header.style.transition =
-          "transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+      header.style.transform = targetTransform;
+      header.style.transition =
+        "transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
 
-        // update camera target
-        targetX += (mouseX - targetX) * 0.05;
-        targetY += (mouseY - targetY) * 0.05;
+      // update camera target
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
 
-        lookAtTarget.x = targetX * params.lookAtRange;
-        lookAtTarget.y = -targetY * params.lookAtRange;
-        lookAtTarget.z =
-          (lookAtTarget.x * lookAtTarget.x) / (params.depth * params.curvature);
+      lookAtTarget.x = targetX * params.lookAtRange;
+      lookAtTarget.y = -targetY * params.lookAtRange;
+      lookAtTarget.z =
+        (lookAtTarget.x * lookAtTarget.x) / (params.depth * params.curvature);
 
-        const time = performance.now() * 0.001;
+      const time = performance.now() * 0.001;
 
-        // update each plane
-        galleryImages.forEach((plane) => {
-          const {
-            basePosition,
-            baseRotation,
-            parallaxFactor,
-            randomOffset,
-            rotationModifier,
-            phaseOffset,
-          } = plane.userData;
+      // update each plane
+      galleryImages.forEach((plane) => {
+        const {
+          basePosition,
+          baseRotation,
+          parallaxFactor,
+          randomOffset,
+          rotationModifier,
+          phaseOffset,
+        } = plane.userData;
 
-          const mouseDistance = Math.sqrt(targetX * targetX + targetY * targetY);
-          const parallaxX = targetX * parallaxFactor * 3 * randomOffset.x;
-          const parallaxY = targetY * parallaxFactor * 3 * randomOffset.y;
-          const oscillation = Math.sin(time + phaseOffset) * mouseDistance * 0.1;
+        const mouseDistance = Math.sqrt(targetX * targetX + targetY * targetY);
+        const parallaxX = targetX * parallaxFactor * 3 * randomOffset.x;
+        const parallaxY = targetY * parallaxFactor * 3 * randomOffset.y;
+        const oscillation = Math.sin(time + phaseOffset) * mouseDistance * 0.1;
 
-          // update position
-          plane.position.x =
-            basePosition.x + parallaxX + oscillation * randomOffset.x;
-          plane.position.y =
-            basePosition.y + parallaxY + oscillation * randomOffset.y;
-          plane.position.z =
-            basePosition.z + oscillation * randomOffset.z * parallaxFactor;
+        // update position
+        plane.position.x =
+          basePosition.x + parallaxX + oscillation * randomOffset.x;
+        plane.position.y =
+          basePosition.y + parallaxY + oscillation * randomOffset.y;
+        plane.position.z =
+          basePosition.z + oscillation * randomOffset.z * parallaxFactor;
 
-          // update rotation
-          plane.rotation.x =
-            baseRotation.x +
-            targetY * rotationModifier.x * mouseDistance +
-            oscillation * rotationModifier.x * 0.2;
+        // update rotation
+        plane.rotation.x =
+          baseRotation.x +
+          targetY * rotationModifier.x * mouseDistance +
+          oscillation * rotationModifier.x * 0.2;
 
-          plane.rotation.y =
-            baseRotation.y +
-            targetX * rotationModifier.y * mouseDistance +
-            oscillation * rotationModifier.y * 0.2;
+        plane.rotation.y =
+          baseRotation.y +
+          targetX * rotationModifier.y * mouseDistance +
+          oscillation * rotationModifier.y * 0.2;
 
-          plane.rotation.z =
-            baseRotation.z +
-            targetX * targetY * rotationModifier.z * 2 +
-            oscillation * rotationModifier.z * 0.3;
-        });
-
-        camera.lookAt(lookAtTarget);
-        renderer.render(scene, camera);
-      }
-
-      // Add functionality to buttons
-      const buttons = document.querySelectorAll('.bottom-nav button');
-      buttons.forEach(button => {
-        button.addEventListener('click', function() {
-          // Remove active class from all buttons
-          buttons.forEach(btn => btn.classList.remove('active'));
-          // Add active class to clicked button
-          this.classList.add('active');
-          
-          // Here you can add code to switch between different content types
-          // For example:
-          const contentType = this.textContent.toLowerCase();
-          console.log(`Switching to ${contentType}`);
-          // updateGallery(contentType); // This would be a function to update the gallery based on content type
-        });
+        plane.rotation.z =
+          baseRotation.z +
+          targetX * targetY * rotationModifier.z * 2 +
+          oscillation * rotationModifier.z * 0.3;
       });
-      
-      // initialize gallery and start animation
-      updateGallery();
-      animate();
-    </script>
-  </body>
+
+      camera.lookAt(lookAtTarget);
+      renderer.render(scene, camera);
+    }
+
+    // Add functionality to buttons
+    const buttons = document.querySelectorAll('.bottom-nav button');
+    buttons.forEach(button => {
+      button.addEventListener('click', function () {
+        // Remove active class from all buttons
+        buttons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        this.classList.add('active');
+
+        // Here you can add code to switch between different content types
+        // For example:
+        const contentType = this.textContent.toLowerCase();
+        console.log(`Switching to ${contentType}`);
+        // updateGallery(contentType); // This would be a function to update the gallery based on content type
+      });
+    });
+
+    // initialize gallery and start animation
+    updateGallery();
+    animate();
+  </script>
+</body>
+
 </html>

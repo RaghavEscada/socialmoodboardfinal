@@ -283,7 +283,7 @@
     function loadImageTexture(imageNumber) {
       return new Promise((resolve) => {
         const texture = textureLoader.load(
-          `./img${imageNumber}.jpg`,
+          `./p${imageNumber}.webp`,
           (loadedTexture) => {
             loadedTexture.generateMipmaps = true;
             loadedTexture.minFilter = THREE.LinearMipmapLinearFilter;
@@ -295,7 +295,7 @@
           (error) => {
             console.error(`Error loading image ${imageNumber}:`, error);
             // Fallback to a default texture
-            const fallbackTexture = textureLoader.load('./img1.jpg', resolve);
+            const fallbackTexture = textureLoader.load('./p1.webp', resolve);
           }
         );
       });
