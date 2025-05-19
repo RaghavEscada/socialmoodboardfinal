@@ -1,492 +1,503 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Social Moodboard</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Social Moodboard</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+    
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #494949;
+  overflow: hidden;
+}
+    
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+    
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+    
+nav p {
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px;
+  background-color: #d4f70c;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+    
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+  z-index: 2;
+}
+    
+.bottom-nav button {
+  text-transform: uppercase;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+    
+.bottom-nav button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+    
+.bottom-nav button.active {
+  background-color: #d4f70c;
+  color: #000;
+}
+    
+.header {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  will-change: transform;
+  z-index: 2;
+}
+    
+h1 {
+  text-transform: uppercase;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 5.5vw;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  color: #fff;
+}
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      background-color: #494949;
-      overflow: hidden;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      padding: 2em;
-      display: flex;
-      justify-content: center;
-      z-index: 2;
-    }
-
-    nav p {
-      text-transform: uppercase;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      padding: 4px;
-      background-color: #d4f70c;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .bottom-nav {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      padding: 2em;
-      display: flex;
-      justify-content: space-between;
-      z-index: 2;
-    }
-
-    .bottom-nav button {
-      text-transform: uppercase;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      padding: 8px 20px;
-      background-color: rgba(255, 255, 255, 0.1);
-      color: white;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .bottom-nav button:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .bottom-nav button.active {
-      background-color: #d4f70c;
-      color: #000;
-    }
-
-    .header {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      will-change: transform;
-      z-index: 2;
-    }
-
-    h1 {
-      text-transform: uppercase;
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-      font-size: 5.5vw;
-      letter-spacing: -0.025em;
-      line-height: 1;
-      transform-style: preserve-3d;
-      backface-visibility: hidden;
-      color: #fff;
-    }
-
-    h2 {
-      font-family: 'Times New Roman', Times, serif;
-      color: white;
-      font-size: 50px;
-    }
-  </style>
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+  font-size: 50px;
+}
+</style>
 </head>
-
 <body>
-  <nav>
+<nav>
+</nav>
+<div class="header">
+  <h2>MOOD. ENERGY. IMPACT.</h2>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+<script>
+// Using actual image files from the public folder
+const allImages = [
+  { url: "/w1.webp" },
+  { url: "/w2.webp" },
+  { url: "/w3.webp" },
+  { url: "/w4.webp" },
+  { url: "/w5.webp" },
+  { url: "/w6.webp" },
+  { url: "/w14.webp" },
+  { url: "/w8.webp" },
+  { url: "/w9.webp" }, // This might be one of the red juice images
+  { url: "/w10.webp" },
+  { url: "/w11.webp" },
+  { url: "/w12.webp" },
+  { url: "/w13.webp" },
+  { url: "/w15.webp" },
+  { url: "/w16.webp" },
+  { url: "/w17.webp" },
+  { url: "/w18.webp" },
+  { url: "/p1.webp" },
+  { url: "/p2.webp" },
+  { url: "/p3.webp" }, // This might be one of the red juice images
+  { url: "/p4.webp" },
+  { url: "/p5.webp" },
+  { url: "/p6.webp" },
+  { url: "/p7.webp" },
+  { url: "/p8.webp" },
+  { url: "/p9.webp" },
+  { url: "/p10.webp" },
+  { url: "/p11.webp" },
+  { url: "/p12.webp" },
+  { url: "/p13.webp" },
+  { url: "/p14.webp" },
+  { url: "/p15.webp" },
+  { url: "/p16.webp" },
+  { url: "/p17.webp" },
+  { url: "/p18.webp" },
+  { url: "/p19.webp" },
+  { url: "/p20.webp" }
+];
 
-  </nav>
+// Comment out duplicates or visually similar images here
+// For example: if w9.webp and p3.webp are visually similar red juice images
+const excludedImages = ["/p3.webp"]; // Exclude one of the red juice images
 
-  <div class="header">
-    <h2>MOOD. ENERGY. IMPACT.</h2>
-  </div>
+// Filter out any excluded images
+const images = allImages.filter(img => !excludedImages.includes(img.url));
 
+// Remove any duplicates from the images array
+const uniqueUrls = new Set();
+const uniqueImages = images.filter(img => {
+  if (uniqueUrls.has(img.url)) {
+    return false;
+  }
+  uniqueUrls.add(img.url);
+  return true;
+});
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
-  <script>
-    // Using actual image files from the public folder
-    const images = [
-      { url: "/w1.webp" },
-      { url: "/w2.webp" },
-      { url: "/w3.webp" },
-      { url: "/w4.webp" },
-      { url: "/w5.webp" },
-      { url: "/w6.webp" },
-      { url: "/w14.webp" },
-      { url: "/w8.webp" },
-      { url: "/w9.webp" },
-      { url: "/w10.webp" },
-      { url: "/w11.webp" },
-      { url: "/w12.webp" },
-      { url: "/w13.webp" },
-      { url: "/w15.webp" },
-      { url: "/w16.webp" },
-      { url: "/w17.webp" },
-      { url: "/w18.webp" },
-      { url: "/p1.webp" },
-      { url: "/p1.webp" },
-      { url: "/p2.webp" },
-      { url: "/p3.webp" },
-      { url: "/p4.webp" },
-      { url: "/p5.webp" },
-      { url: "/p6.webp" },
-      { url: "/p7.webp" },
-      { url: "/p8.webp" },
-      { url: "/p9.webp" },
-      { url: "/p10.webp" },
-      { url: "/p11.webp" },
-      { url: "/p12.webp" },
-      { url: "/p13.webp" },
-      { url: "/p14.webp" },
-      { url: "/p15.webp" },
-      { url: "/p16.webp" },
-      { url: "/p17.webp" },
-      { url: "/p18.webp" },
-      { url: "/p19.webp" },
-      { url: "/p20.webp" }
+// configuration parameters
+const params = {
+  // Adjust rows and columns based on available unique images
+  // With ~37 unique images, we can use a 6x6 grid (36 images)
+  rows: 6,
+  columns: 6,
+  curvature: 5,
+  spacing: 10, // Adjusted spacing for the larger grid
+  imageWidth: 6, // Slightly reduced size for better fit
+  imageHeight: 8, // Slightly reduced size for better fit
+  depth: 7.5,
+  elevation: 0,
+  lookAtRange: 20,
+  verticalCurvature: 0.5,
+  anisotropy: 16, // Added for better image quality
+};
 
-    ];
+// scene setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  25,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+camera.position.set(0, 0, 40);
 
-    // configuration parameters
-    const params = {
-      // Reduce rows and columns to avoid image repetition
-      // We have 17 images, so we'll use 4x4 = 16 slots
-      rows: 4,
-      columns: 4,
-      curvature: 5,
-      spacing: 12, // Increased spacing to fill more of the view
-      imageWidth: 7, // Increased image size
-      imageHeight: 9, // Increased image size
-      depth: 7.5,
-      elevation: 0,
-      lookAtRange: 20,
-      verticalCurvature: 0.5,
-      anisotropy: 16, // Added for better image quality
-    };
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  powerPreference: "high-performance" // Added for better performance
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setClearColor(0x494949);
+renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
+document.body.appendChild(renderer.domElement);
 
-    // scene setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      25,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    camera.position.set(0, 0, 40);
+// Create a texture loader with improved settings
+const textureLoader = new THREE.TextureLoader();
 
-    const renderer = new THREE.WebGLRenderer({
-      antialias: true,
-      powerPreference: "high-performance" // Added for better performance
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0x494949);
-    renderer.setPixelRatio(window.devicePixelRatio); // Match device pixel ratio
-    document.body.appendChild(renderer.domElement);
+// Enable anisotropic filtering for all textures
+const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
+params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
 
-    // Create a texture loader with improved settings
-    const textureLoader = new THREE.TextureLoader();
+// Load all textures in advance with high quality settings
+const textureCache = {};
+uniqueImages.forEach(image => {
+  const texture = textureLoader.load(image.url);
+  texture.anisotropy = params.anisotropy;
+  texture.minFilter = THREE.LinearMipMapLinearFilter;
+  texture.magFilter = THREE.LinearFilter;
+  texture.generateMipmaps = true;
+  textureCache[image.url] = texture;
+});
 
-    // Enable anisotropic filtering for all textures
-    const maxAnisotropy = renderer.capabilities.getMaxAnisotropy();
-    params.anisotropy = Math.min(params.anisotropy, maxAnisotropy);
+// debug mode setup
+const DEBUG_MODE = false;
+let gui;
+if (DEBUG_MODE) {
+  gui = new dat.GUI();
+  gui.add(params, "rows", 1, 10).onChange(updateGallery);
+  gui.add(params, "columns", 1, 10).onChange(updateGallery);
+  gui.add(params, "imageWidth", 1, 10).onChange(updateGallery);
+  gui.add(params, "imageHeight", 1, 10).onChange(updateGallery);
+  gui.add(params, "spacing", 2, 20).onChange(updateGallery);
+  gui.add(params, "curvature", 0, 10).onChange(updateGallery);
+  gui.add(params, "verticalCurvature", 0, 2).onChange(updateGallery);
+  gui.add(params, "depth", 5, 50).onChange(updateGallery);
+  gui.add(params, "elevation", -10, 10).onChange(updateGallery);
+  gui.add(params, "lookAtRange", 5, 50).name("Look Range");
+  gui.add(params, "anisotropy", 1, maxAnisotropy).name("Texture Quality").onChange(updateTextureQuality);
+}
 
-    // Load all textures in advance with high quality settings
-    const textureCache = {};
-    images.forEach(image => {
-      const texture = textureLoader.load(image.url);
-      texture.anisotropy = params.anisotropy;
-      texture.minFilter = THREE.LinearMipMapLinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      texture.generateMipmaps = true;
-      textureCache[image.url] = texture;
-    });
+function updateTextureQuality() {
+  Object.values(textureCache).forEach(texture => {
+    texture.anisotropy = params.anisotropy;
+    texture.needsUpdate = true;
+  });
+}
 
-    // debug mode setup
-    const DEBUG_MODE = false;
-    let gui;
-    if (DEBUG_MODE) {
-      gui = new dat.GUI();
-      gui.add(params, "rows", 1, 8).onChange(updateGallery);
-      gui.add(params, "columns", 1, 10).onChange(updateGallery);
-      gui.add(params, "imageWidth", 1, 10).onChange(updateGallery);
-      gui.add(params, "imageHeight", 1, 10).onChange(updateGallery);
-      gui.add(params, "spacing", 2, 20).onChange(updateGallery);
-      gui.add(params, "curvature", 0, 10).onChange(updateGallery);
-      gui.add(params, "verticalCurvature", 0, 2).onChange(updateGallery);
-      gui.add(params, "depth", 5, 50).onChange(updateGallery);
-      gui.add(params, "elevation", -10, 10).onChange(updateGallery);
-      gui.add(params, "lookAtRange", 5, 50).name("Look Range");
-      gui.add(params, "anisotropy", 1, maxAnisotropy).name("Texture Quality").onChange(updateTextureQuality);
+// header animation setup
+const header = document.querySelector(".header");
+let headerRotationX = 0;
+let headerRotationY = 0;
+let headerTranslateZ = 0;
+
+// mouse movement variables
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+const lookAtTarget = new THREE.Vector3(0, 0, 0);
+
+// gallery mathematics functions
+function calculateRotations(x, y) {
+  const a = 1 / (params.depth * params.curvature);
+  const slopeY = -2 * a * x;
+  const rotationY = Math.atan(slopeY);
+
+  const verticalFactor = params.verticalCurvature;
+  const maxYDistance = (params.rows * params.spacing) / 2;
+  const normalizedY = y / maxYDistance;
+  const rotationX = normalizedY * verticalFactor;
+
+  return { rotationX, rotationY };
+}
+
+function calculatePosition(row, col) {
+  let x = (col - params.columns / 2) * params.spacing;
+  let y = (row - params.rows / 2) * params.spacing;
+
+  let z = (x * x) / (params.depth * params.curvature);
+
+  const normalizedY = y / ((params.rows * params.spacing) / 2);
+  z += Math.abs(normalizedY) * normalizedY * params.verticalCurvature * 5;
+
+  y += params.elevation;
+
+  const { rotationX, rotationY } = calculateRotations(x, y);
+
+  return { x, y, z, rotationX, rotationY };
+}
+
+// gallery creation functions
+let galleryImages = [];
+let usedImageIndices = new Set(); // Track which images have been used
+
+function createImagePlane(row, col) {
+  // Calculate total images needed and check against available unique images
+  const totalImagesNeeded = params.rows * params.columns;
+  
+  // Get a random unused image index
+  let imageIndex;
+  do {
+    imageIndex = Math.floor(Math.random() * images.length);
+  } while (usedImageIndices.has(imageIndex) && usedImageIndices.size < images.length);
+  
+  // Add this index to used set
+  usedImageIndices.add(imageIndex);
+  
+  const imageData = images[imageIndex];
+  const geometry = new THREE.PlaneGeometry(
+    params.imageWidth,
+    params.imageHeight
+  );
+
+  // Use cached texture with higher quality settings
+  const texture = textureCache[imageData.url];
+  
+  const material = new THREE.MeshBasicMaterial({
+    map: texture,
+    side: THREE.DoubleSide,
+  });
+
+  const plane = new THREE.Mesh(geometry, material);
+  const { x, y, z, rotationX, rotationY } = calculatePosition(row, col);
+
+  plane.position.set(x, y, z);
+  plane.rotation.x = rotationX;
+  plane.rotation.y = rotationY;
+
+  plane.userData.basePosition = { x, y, z };
+  plane.userData.baseRotation = { x: rotationX, y: rotationY, z: 0 };
+  plane.userData.parallaxFactor = Math.random() * 0.5 + 0.5;
+  plane.userData.randomOffset = {
+    x: Math.random() * 2 - 1,
+    y: Math.random() * 2 - 1,
+    z: Math.random() * 2 - 1,
+  };
+  plane.userData.rotationModifier = {
+    x: Math.random() * 0.15 - 0.075,
+    y: Math.random() * 0.15 - 0.075,
+    z: Math.random() * 0.2 - 0.1,
+  };
+  plane.userData.phaseOffset = Math.random() * Math.PI * 2;
+  
+  return plane;
+}
+
+function updateGallery() {
+  galleryImages.forEach((plane) => {
+    scene.remove(plane);
+  });
+
+  galleryImages = [];
+  
+  // Reset used images tracking
+  usedImageIndices = new Set();
+  
+  // Ensure we're not trying to display more unique images than we have
+  const totalImagesNeeded = params.rows * params.columns;
+  if (totalImagesNeeded > images.length) {
+    console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Adjusting rows/columns.`);
+    // Adjust rows/columns to match available images
+    const sqrtImages = Math.floor(Math.sqrt(images.length));
+    params.rows = sqrtImages;
+    params.columns = Math.ceil(images.length / sqrtImages);
+  }
+
+  for (let row = 0; row < params.rows; row++) {
+    for (let col = 0; col < params.columns; col++) {
+      const plane = createImagePlane(row, col);
+      galleryImages.push(plane);
+      scene.add(plane);
     }
+  }
+}
 
-    function updateTextureQuality() {
-      Object.values(textureCache).forEach(texture => {
-        texture.anisotropy = params.anisotropy;
-        texture.needsUpdate = true;
-      });
-    }
+// event listeners
+document.addEventListener("mousemove", (event) => {
+  mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+  mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
 
-    // header animation setup
-    const header = document.querySelector(".header");
-    let headerRotationX = 0;
-    let headerRotationY = 0;
-    let headerTranslateZ = 0;
+  headerRotationX = -mouseY * 30;
+  headerRotationY = mouseX * 30;
+  headerTranslateZ = Math.abs(mouseX * mouseY) * 50;
+});
 
-    // mouse movement variables
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    const lookAtTarget = new THREE.Vector3(0, 0, 0);
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(window.devicePixelRatio);
+});
 
-    // gallery mathematics functions
-    function calculateRotations(x, y) {
-      const a = 1 / (params.depth * params.curvature);
-      const slopeY = -2 * a * x;
-      const rotationY = Math.atan(slopeY);
+// animation loop
+function animate() {
+  requestAnimationFrame(animate);
 
-      const verticalFactor = params.verticalCurvature;
-      const maxYDistance = (params.rows * params.spacing) / 2;
-      const normalizedY = y / maxYDistance;
-      const rotationX = normalizedY * verticalFactor;
+  // update header transform
+  const targetTransform = `
+    translate(-50%, -50%)
+    perspective(1000px)
+    rotateX(${headerRotationX}deg)
+    rotateY(${headerRotationY}deg)
+    translateZ(${headerTranslateZ}px)
+  `;
 
-      return { rotationX, rotationY };
-    }
+  header.style.transform = targetTransform;
+  header.style.transition =
+    "transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
 
-    function calculatePosition(row, col) {
-      let x = (col - params.columns / 2) * params.spacing;
-      let y = (row - params.rows / 2) * params.spacing;
+  // update camera target
+  targetX += (mouseX - targetX) * 0.05;
+  targetY += (mouseY - targetY) * 0.05;
 
-      let z = (x * x) / (params.depth * params.curvature);
+  lookAtTarget.x = targetX * params.lookAtRange;
+  lookAtTarget.y = -targetY * params.lookAtRange;
+  lookAtTarget.z =
+    (lookAtTarget.x * lookAtTarget.x) / (params.depth * params.curvature);
 
-      const normalizedY = y / ((params.rows * params.spacing) / 2);
-      z += Math.abs(normalizedY) * normalizedY * params.verticalCurvature * 5;
+  const time = performance.now() * 0.001;
 
-      y += params.elevation;
+  // update each plane
+  galleryImages.forEach((plane) => {
+    const {
+      basePosition,
+      baseRotation,
+      parallaxFactor,
+      randomOffset,
+      rotationModifier,
+      phaseOffset,
+    } = plane.userData;
 
-      const { rotationX, rotationY } = calculateRotations(x, y);
+    const mouseDistance = Math.sqrt(targetX * targetX + targetY * targetY);
+    const parallaxX = targetX * parallaxFactor * 3 * randomOffset.x;
+    const parallaxY = targetY * parallaxFactor * 3 * randomOffset.y;
+    const oscillation = Math.sin(time + phaseOffset) * mouseDistance * 0.1;
 
-      return { x, y, z, rotationX, rotationY };
-    }
+    // update position
+    plane.position.x =
+      basePosition.x + parallaxX + oscillation * randomOffset.x;
+    plane.position.y =
+      basePosition.y + parallaxY + oscillation * randomOffset.y;
+    plane.position.z =
+      basePosition.z + oscillation * randomOffset.z * parallaxFactor;
 
-    // gallery creation functions
-    let galleryImages = [];
-    let usedImageIndices = new Set(); // Track which images have been used
+    // update rotation
+    plane.rotation.x =
+      baseRotation.x +
+      targetY * rotationModifier.x * mouseDistance +
+      oscillation * rotationModifier.x * 0.2;
 
-    function createImagePlane(row, col) {
-      // Calculate total images needed and check against available unique images
-      const totalImagesNeeded = params.rows * params.columns;
+    plane.rotation.y =
+      baseRotation.y +
+      targetX * rotationModifier.y * mouseDistance +
+      oscillation * rotationModifier.y * 0.2;
 
-      // Get a random unused image index
-      let imageIndex;
-      do {
-        imageIndex = Math.floor(Math.random() * images.length);
-      } while (usedImageIndices.has(imageIndex) && usedImageIndices.size < images.length);
+    plane.rotation.z =
+      baseRotation.z +
+      targetX * targetY * rotationModifier.z * 2 +
+      oscillation * rotationModifier.z * 0.3;
+  });
 
-      // Add this index to used set
-      usedImageIndices.add(imageIndex);
+  camera.lookAt(lookAtTarget);
+  renderer.render(scene, camera);
+}
 
-      const imageData = images[imageIndex];
-      const geometry = new THREE.PlaneGeometry(
-        params.imageWidth,
-        params.imageHeight
-      );
+// No bottom navigation
 
-      // Use cached texture with higher quality settings
-      const texture = textureCache[imageData.url];
+// Add functionality to buttons
+const buttons = document.querySelectorAll('.bottom-nav button');
+buttons.forEach(button => {
+  button.addEventListener('click', function() {
+    // Remove active class from all buttons
+    buttons.forEach(btn => btn.classList.remove('active'));
+    // Add active class to clicked button
+    this.classList.add('active');
+    
+    // Filter images by selected category
+    const contentType = this.textContent.toLowerCase();
+    console.log(`Switching to ${contentType}`);
+    
+    // Update gallery with filtered images
+    updateGallery(contentType);
+  });
+});
 
-      const material = new THREE.MeshBasicMaterial({
-        map: texture,
-        side: THREE.DoubleSide,
-      });
-
-      const plane = new THREE.Mesh(geometry, material);
-      const { x, y, z, rotationX, rotationY } = calculatePosition(row, col);
-
-      plane.position.set(x, y, z);
-      plane.rotation.x = rotationX;
-      plane.rotation.y = rotationY;
-
-      plane.userData.basePosition = { x, y, z };
-      plane.userData.baseRotation = { x: rotationX, y: rotationY, z: 0 };
-      plane.userData.parallaxFactor = Math.random() * 0.5 + 0.5;
-      plane.userData.randomOffset = {
-        x: Math.random() * 2 - 1,
-        y: Math.random() * 2 - 1,
-        z: Math.random() * 2 - 1,
-      };
-      plane.userData.rotationModifier = {
-        x: Math.random() * 0.15 - 0.075,
-        y: Math.random() * 0.15 - 0.075,
-        z: Math.random() * 0.2 - 0.1,
-      };
-      plane.userData.phaseOffset = Math.random() * Math.PI * 2;
-
-      return plane;
-    }
-
-    function updateGallery() {
-      galleryImages.forEach((plane) => {
-        scene.remove(plane);
-      });
-
-      galleryImages = [];
-
-      // Reset used images tracking
-      usedImageIndices = new Set();
-
-      // Ensure we're not trying to display more unique images than we have
-      const totalImagesNeeded = params.rows * params.columns;
-      if (totalImagesNeeded > images.length) {
-        console.warn(`Gallery needs ${totalImagesNeeded} images but only ${images.length} unique images are available. Adjusting rows/columns.`);
-        // Adjust rows/columns to match available images
-        const sqrtImages = Math.floor(Math.sqrt(images.length));
-        params.rows = sqrtImages;
-        params.columns = Math.floor(images.length / sqrtImages);
-      }
-
-      for (let row = 0; row < params.rows; row++) {
-        for (let col = 0; col < params.columns; col++) {
-          const plane = createImagePlane(row, col);
-          galleryImages.push(plane);
-          scene.add(plane);
-        }
-      }
-    }
-
-    // event listeners
-    document.addEventListener("mousemove", (event) => {
-      mouseX = (event.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
-      mouseY = (event.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
-
-      headerRotationX = -mouseY * 30;
-      headerRotationY = mouseX * 30;
-      headerTranslateZ = Math.abs(mouseX * mouseY) * 50;
-    });
-
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
-    });
-
-    // animation loop
-    function animate() {
-      requestAnimationFrame(animate);
-
-      // update header transform
-      const targetTransform = `
-          translate(-50%, -50%)
-          perspective(1000px)
-          rotateX(${headerRotationX}deg)
-          rotateY(${headerRotationY}deg)
-          translateZ(${headerTranslateZ}px)
-        `;
-
-      header.style.transform = targetTransform;
-      header.style.transition =
-        "transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
-
-      // update camera target
-      targetX += (mouseX - targetX) * 0.05;
-      targetY += (mouseY - targetY) * 0.05;
-
-      lookAtTarget.x = targetX * params.lookAtRange;
-      lookAtTarget.y = -targetY * params.lookAtRange;
-      lookAtTarget.z =
-        (lookAtTarget.x * lookAtTarget.x) / (params.depth * params.curvature);
-
-      const time = performance.now() * 0.001;
-
-      // update each plane
-      galleryImages.forEach((plane) => {
-        const {
-          basePosition,
-          baseRotation,
-          parallaxFactor,
-          randomOffset,
-          rotationModifier,
-          phaseOffset,
-        } = plane.userData;
-
-        const mouseDistance = Math.sqrt(targetX * targetX + targetY * targetY);
-        const parallaxX = targetX * parallaxFactor * 3 * randomOffset.x;
-        const parallaxY = targetY * parallaxFactor * 3 * randomOffset.y;
-        const oscillation = Math.sin(time + phaseOffset) * mouseDistance * 0.1;
-
-        // update position
-        plane.position.x =
-          basePosition.x + parallaxX + oscillation * randomOffset.x;
-        plane.position.y =
-          basePosition.y + parallaxY + oscillation * randomOffset.y;
-        plane.position.z =
-          basePosition.z + oscillation * randomOffset.z * parallaxFactor;
-
-        // update rotation
-        plane.rotation.x =
-          baseRotation.x +
-          targetY * rotationModifier.x * mouseDistance +
-          oscillation * rotationModifier.x * 0.2;
-
-        plane.rotation.y =
-          baseRotation.y +
-          targetX * rotationModifier.y * mouseDistance +
-          oscillation * rotationModifier.y * 0.2;
-
-        plane.rotation.z =
-          baseRotation.z +
-          targetX * targetY * rotationModifier.z * 2 +
-          oscillation * rotationModifier.z * 0.3;
-      });
-
-      camera.lookAt(lookAtTarget);
-      renderer.render(scene, camera);
-    }
-
-    // Add functionality to buttons
-    const buttons = document.querySelectorAll('.bottom-nav button');
-    buttons.forEach(button => {
-      button.addEventListener('click', function () {
-        // Remove active class from all buttons
-        buttons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        this.classList.add('active');
-
-        // Here you can add code to switch between different content types
-        // For example:
-        const contentType = this.textContent.toLowerCase();
-        console.log(`Switching to ${contentType}`);
-        // updateGallery(contentType); // This would be a function to update the gallery based on content type
-      });
-    });
-
-    // initialize gallery and start animation
-    updateGallery();
-    animate();
-  </script>
+// initialize gallery and start animation
+updateGallery();
+animate();
+</script>
 </body>
-
 </html>
