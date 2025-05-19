@@ -69,9 +69,10 @@ const services = [
     src: "/web.png",
     bulletins: [
       "Responsive Website Design",
+      "Bespoke & Creative Websites",
       "Frontend & Backend Development",
+      "E-Commerce (Shopify)",
       "SEO Optimization",
-      "CMS Setup (WordPress, Webflow, etc.)",
       "Performance & Speed Optimization",
       "UI/UX Best Practices Implementation",
     ],
@@ -139,12 +140,12 @@ const ServicePopup = ({ service, isOpen, onClose }: { service: any, isOpen: bool
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4">
-      <div className="bg-gray-900 border border-red-600/30 rounded-xl w-full max-w-md relative overflow-hidden animate-fadeIn">
+      <div className="bg-black border border-red-600/30 rounded-xl w-full max-w-md relative overflow-hidden animate-fadeIn">
         {/* Header with gradient */}
-        <div className="bg-gradient-to-r from-red-800 to-red-950 p-6 relative">
+        <div className="bg-black p-6 relative">
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors"
+            className="absolute top-4 right-4 text-black hover:text-red-500 transition-colors"
           >
             <X size={24} />
           </button>
