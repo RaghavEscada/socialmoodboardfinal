@@ -20,7 +20,7 @@ export default function Footer() {
                   />
                 </div>
                 <span className="text-4xl font-['Gilda_Display']">
-                  We Don't Do <span className="italic text-red-600">Ordinary</span>
+                  We Do not fw <span className="italic text-red-600">Ordinary</span>
                 </span>
               </div>
             </Link>
