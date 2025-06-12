@@ -26,6 +26,7 @@ export default function Footer() {
             </Link>
             <p className="text-sm text-gray-400">© copyright Social Moodboard 2025. All rights reserved.</p>
           </div>
+          
           {/* Navigation Columns */}
           <div className="grid grid-cols-3 gap-8 lg:gap-16">
             {/* Pages Column */}
@@ -38,15 +39,44 @@ export default function Footer() {
                 <li><Link href="/contact" className="hover:text-gray-300">Contact</Link></li>
               </ul>
             </div>
+            
             {/* Socials Column */}
             <div>
               <h3 className="text-lg font-medium mb-6">Socials</h3>
               <ul className="space-y-4">
-                <li><Link href="https://www.facebook.com/profile.php?id=61573787330753" className="hover:text-gray-300">Facebook</Link></li>
-                <li><Link href="https://www.instagram.com/socialmooodboard/" className="hover:text-gray-300">Instagram</Link></li>
-                <li><Link href="https://www.linkedin.com/in/vishishta-banerjee-9652ba198/" className="hover:text-gray-300">LinkedIn</Link></li>
+                <li>
+                  <Link 
+                    href="https://www.facebook.com/profile.php?id=61573787330753" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-300"
+                  >
+                    Facebook
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="https://www.instagram.com/socialmooodboard/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-300"
+                  >
+                    Instagram
+                  </Link>
+                </li>
+                <li>
+                  <Link 
+                    href="https://www.linkedin.com/in/vishishta-banerjee-9652ba198/" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-gray-300"
+                  >
+                    LinkedIn
+                  </Link>
+                </li>
               </ul>
             </div>
+            
             {/* Legal Column */}
             <div>
               <h3 className="text-lg font-medium mb-6">Legal</h3>
@@ -57,14 +87,13 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
- 
-      
-      {/* Large DevStudio text at bottom with full width */}
-      <div className="w-full mt-16 pb-32 overflow-hidden">
-        <h1 className="text-3xl text-center md:text-7xl lg:text-8xl font-bold text-secondary opacity-30 leading-none">
-          SOCIAL <br /> MOODBOARD
-        </h1>
+        
+        {/* Large DevStudio text at bottom with full width */}
+        <div className="w-full mt-16 pb-32 overflow-hidden">
+          <h1 className="text-3xl text-center md:text-7xl lg:text-8xl font-bold text-gray-600 opacity-30 leading-none">
+            SOCIAL <br /> MOODBOARD
+          </h1>
+        </div>
       </div>
     </footer>
   );
